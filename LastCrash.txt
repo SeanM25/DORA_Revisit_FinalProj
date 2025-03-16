@@ -1,16 +1,17 @@
 Traceback (most recent call last):
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/Chapter4.py", line 217, in <module>
-    ourWindow = Chapter4()
+  File "C:\Users\seanm\ECE163\project\dorarevisit\Chapter7.py", line 342, in <module>
+    ourWindow = Chapter6()
                 ^^^^^^^^^^
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/Chapter4.py", line 39, in __init__
-    super().__init__(parent)
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Display/baseInterface.py", line 94, in __init__
-    self.vehicleInstance = vehicleDisplay.vehicleDisplay()
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Display/vehicleDisplay.py", line 54, in __init__
-    self.vehicleDrawInstance = VehicleGeometry.VehicleGeometry()
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Modeling/VehicleGeometry.py", line 203, in __init__
-    [95*SC, -41*SC, 102*SC], # [45]
-        ^^
-NameError: name 'SC' is not defined. Did you mean: 'self.SC'?
+  File "C:\Users\seanm\ECE163\project\dorarevisit\Chapter7.py", line 41, in __init__
+    self.simulateInstance = ece163.Simulation.Chapter7Simulate.Chapter7Simulate()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Simulation\Chapter7Simulate.py", line 12, in __init__
+    self.underlyingModel = VehicleClosedLoopControl.VehicleClosedLoopControl(useSensors=True)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Controls\VehicleClosedLoopControl.py", line 319, in __init__
+    self.sensorsModel = SensorsModel.SensorsModel(aeroModel = VehicleAerodynamicsModule.VehicleAerodynamicsModel()) # Assign sensors model param
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Sensors\SensorsModel.py", line 182, in __init__
+    self.dT = self.VAM.VDynamics.dT # Get dT
+              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'VehicleAerodynamicsModel' object has no attribute 'VDynamics'

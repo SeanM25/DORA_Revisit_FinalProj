@@ -307,27 +307,22 @@ class VehicleGeometry():
 
 					  [95*self.SC, 41*self.SC, 102*self.SC], # [88]
 
-					  [160*self.SC, 41*self.SC, 37*self.SC] # [89]
+					  [161*self.SC, 41*self.SC, 37*self.SC], # [89]
+
+					  # Propellor 
+
+					  [161*self.SC, 113*self.SC, 22*self.SC], # [90]
+
+					  [161*self.SC, 113*self.SC, 38*self.SC], # [91]
+
+					  [161*self.SC, 0, 30*self.SC], # [92]
 
 
+					  [161*self.SC, -113*self.SC, 22*self.SC], # [93]
 
+					  [161*self.SC, -113*self.SC, 38*self.SC], # [94]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+					  [161*self.SC, 0, 30*self.SC] # [95]
 
 
 
@@ -434,7 +429,13 @@ class VehicleGeometry():
 
 					  [84, 85, 86],
 
-					  [87, 88, 89]
+					  [87, 88, 89],
+
+					  # Propeller
+
+					  [90, 91, 92],
+
+					  [93, 94, 95]
 
 
 
@@ -443,7 +444,7 @@ class VehicleGeometry():
 
 		self.colors = [green, green, green, green, red, red, green, green, red, red, green, green, white, white, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue,
 				 
-				 		yellow, yellow, yellow, yellow
+				 		yellow, yellow, yellow, yellow, red, red
 				 
 
 
