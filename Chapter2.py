@@ -3,6 +3,19 @@ import sys
 
 import PyQt5.QtCore as QtCore
 import PyQt5.QtWidgets as QtWidgets
+# FIX FOR LINUX OPENGL ERROR: OpenGL.error.Error: Attempt to retrieve context when no valid context
+# import os
+# os.environ['PYOPENGL_PLATFORM'] = 'glx'
+import pyqtgraph.opengl as gl
+from PyQt5.QtGui import QSurfaceFormat
+
+# Force OpenGL Compatibility Profile
+fmt = QSurfaceFormat()
+fmt.setRenderableType(QSurfaceFormat.OpenGL)
+fmt.setProfile(QSurfaceFormat.CompatibilityProfile)  # Allows legacy OpenGL
+fmt.setVersion(2, 1)  # Use OpenGL 2.1 (widely compatible)
+QSurfaceFormat.setDefaultFormat(fmt)
+
 
 import ece163.Display.baseInterface as baseInterface
 import ece163.Containers.States as vehicleState

@@ -3,6 +3,16 @@ import sys
 
 import PyQt5.QtWidgets as QtWidgets
 
+import pyqtgraph.opengl as gl
+from PyQt5.QtGui import QSurfaceFormat
+
+# Force OpenGL Compatibility Profile
+fmt = QSurfaceFormat()
+fmt.setRenderableType(QSurfaceFormat.OpenGL)
+fmt.setProfile(QSurfaceFormat.CompatibilityProfile)  # Allows legacy OpenGL
+fmt.setVersion(2, 1)  # Use OpenGL 2.1 (widely compatible)
+QSurfaceFormat.setDefaultFormat(fmt)
+
 import ece163.Display.baseInterface as baseInterface 
 import ece163.Display.GridVariablePlotter
 import ece163.Display.SliderWithValue
