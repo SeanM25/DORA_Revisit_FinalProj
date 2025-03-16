@@ -1,6 +1,6 @@
 """
 Holds the vehicle graphics, only operation on it is to return a set of points and meshes with the appropriate rotation/translation
-currently just returns the modified points, does not update the base ones. Module uses its baseUnit variable to scale the model to an
+currently just returns the modified points, does not update the base ones. Module uses its baseUnit variable to self.SCale the model to an
 arbitrary size for good rendering in the display window.
 """
 
@@ -16,7 +16,7 @@ class VehicleGeometry():
 		"""
 		defines the vehicle in NED coordinates around the local body frame origin. Rotations and translations will be
 		around the [0,0,0] point of this local frame. Has to be in NED or the rotation matrices will not work. Vehicle is
-		scaled to match the wing span of the actual vehicle, this all the points are in meters.
+		self.SCaled to match the wing span of the actual vehicle, this all the points are in meters.
 
 		"vertices" is an [n x 3] matrix of xyz points for each vertex of the vehicle;
 		"faces" is an [m x3] index matrix of which vertices connect to which face (only triangles allowed for faces);
@@ -67,48 +67,48 @@ class VehicleGeometry():
 		# actual MAV model from Beard Chapter 2
 
 		# define MAV body parameters
-		SC = 0.001 # scalingUnit # VPC.b / 6.0	# scaling determined by the wingspan of the aircraft in VehiclePhysicalConstants
+		self.SC = 0.001 # self.SCalingUnit # VPC.b / 6.0	# self.SCaling determined by the wingspan of the aircraft in VehiclePhysicalConstants
 
-		# fuse_h = scalingUnit
-		# fuse_w = scalingUnit
-		# fuse_l1 = 2 * scalingUnit
-		# fuse_l2 = scalingUnit
-		# fuse_l3 = 4 * scalingUnit
-		# wing_l = scalingUnit
-		# wing_w = 6 * scalingUnit	# will match the wingspan (VPC.b) in meters exactly
-		# tail_h = scalingUnit
-		# tail_l = scalingUnit
-		# tail_w = 2 * scalingUnit
+		# fuse_h = self.SCalingUnit
+		# fuse_w = self.SCalingUnit
+		# fuse_l1 = 2 * self.SCalingUnit
+		# fuse_l2 = self.SCalingUnit
+		# fuse_l3 = 4 * self.SCalingUnit
+		# wing_l = self.SCalingUnit
+		# wing_w = 6 * self.SCalingUnit	# will match the wingspan (VPC.b) in meters exactly
+		# tail_h = self.SCalingUnit
+		# tail_l = self.SCalingUnit
+		# tail_w = 2 * self.SCalingUnit
 
 		wing_length = 700 # mm
 
 		wing_depth = 100 # mm
 
 		# Editable flap coordinates
-		self.aelronFlapRadius = 60*SC # CONST: for calculating the angle based coordinates
+		self.aelronFlapRadius = 60*self.SC # CONST: for calculating the angle based coordinates
 		self.aeleronFlapRAngle = -30 # adjusts based on controller: for calculating the angle based coordinates
 		self.aeleronFlapLAngle = 30 # adjusts based on controller: for calculating the angle based coordinates
 		
 		# Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
-		self.aeleron_R_right = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 600*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back right of aeleronn flap R | default: [-160*SC, 600*SC, 0.01]
-		self.aeleron_R_left = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 200*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back left of aeleronn flap R | default: [-160*SC, 200*SC, 0.01]
-		self.aeleron_L_right = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -200*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back right of aeleron flap L | default: [-160*SC, -200*SC, 0.01]
-		self.aeleron_L_left = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -600*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back left of aeleron flap L | default: [-160*SC, -600*SC, 0.01]
+		self.aeleron_R_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back right of aeleronn flap R | default: [-160*self.SC, 600*self.SC, 0.01]
+		self.aeleron_R_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back left of aeleronn flap R | default: [-160*self.SC, 200*self.SC, 0.01]
+		self.aeleron_L_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back right of aeleron flap L | default: [-160*self.SC, -200*self.SC, 0.01]
+		self.aeleron_L_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
 
 		self.vertices = [
 						
 						# Main Wing Body
 						
-						[0, -700*SC, 0], # [0] Front Left Corner of Wing 
-				   		[0, 700*SC, 0], # [1] Front Right Corner of Wing 
-						[-100*SC, 700*SC, 0], # [2] Back Right Corner of Wing / front right of solid Wing R
-						[-100*SC, -700*SC, 0], # [3] Back Left Corner of Wing / front left of solid Wing L
+						[0, -700*self.SC, 0], # [0] Front Left Corner of Wing 
+				   		[0, 700*self.SC, 0], # [1] Front Right Corner of Wing 
+						[-100*self.SC, 700*self.SC, 0], # [2] Back Right Corner of Wing / front right of solid Wing R
+						[-100*self.SC, -700*self.SC, 0], # [3] Back Left Corner of Wing / front left of solid Wing L
 
 						# Solid Wing R of Wing
 
-						[-160*SC, 700*SC, 0], # [4] back right corner of Solid Wing R
-						[-160*SC, 600*SC, 0], # [5] back left corner of Solid Wing R
-						[-100*SC, 600*SC, 0], # [6] front left corner of Solid Wing R / front right of aeleronn flap R
+						[-160*self.SC, 700*self.SC, 0], # [4] back right corner of Solid Wing R
+						[-160*self.SC, 600*self.SC, 0], # [5] back left corner of Solid Wing R
+						[-100*self.SC, 600*self.SC, 0], # [6] front left corner of Solid Wing R / front right of aeleronn flap R
 
 						# aeleron Flap R: adjustable
 
@@ -117,10 +117,10 @@ class VehicleGeometry():
 
 						# Solid Wing C of Wing
 
-						[-100*SC, 200*SC, 0], # [9] front right of Solid Wing C / front left of aeleronn flap R
-						[-160*SC, 200*SC, 0], # [10] back right of Solid Wing C
-						[-160*SC, -200*SC, 0], # [11] back left of Solid Wing C
-						[-100*SC, -200*SC, 0], # [12] front left of Solid Wing C / front right of aeleron flap L
+						[-100*self.SC, 200*self.SC, 0], # [9] front right of Solid Wing C / front left of aeleronn flap R
+						[-160*self.SC, 200*self.SC, 0], # [10] back right of Solid Wing C
+						[-160*self.SC, -200*self.SC, 0], # [11] back left of Solid Wing C
+						[-100*self.SC, -200*self.SC, 0], # [12] front left of Solid Wing C / front right of aeleron flap L
 
 						# aeleron Flap L: adjustable
 						
@@ -129,9 +129,9 @@ class VehicleGeometry():
 
 						# Solid Wing L (of wing)
 
-						[-100*SC, -600*SC, 0], # [15] front right of Solid Wing L / front left of aeleron flap L
-						[-160*SC, -600*SC, 0], # [16] back right of Solid Wing L
-						[-160*SC, -700*SC, 0] # [17] back left of Solid Wing L
+						[-100*self.SC, -600*self.SC, 0], # [15] front right of Solid Wing L / front left of aeleron flap L
+						[-160*self.SC, -600*self.SC, 0], # [16] back right of Solid Wing L
+						[-160*self.SC, -700*self.SC, 0] # [17] back left of Solid Wing L
 				   
 				   ]
 		
@@ -221,7 +221,19 @@ class VehicleGeometry():
 '''
 		return
 
-	def getNewPoints(self, x, y, z, yaw, pitch, roll):
+	def updateAngles(self, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
+		
+		self.aeleronFlapRAngle = -Aileron # adjusts based on controller: for calculating the angle based coordinates
+		self.aeleronFlapLAngle = Aileron # adjusts based on controller: for calculating the angle based coordinates
+		print(self.aeleron_R_right)
+		# Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
+		self.aeleron_R_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back right of aeleronn flap R | default: [-160*self.SC, 600*self.SC, 0.01]
+		self.aeleron_R_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back left of aeleronn flap R | default: [-160*self.SC, 200*self.SC, 0.01]
+		self.aeleron_L_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back right of aeleron flap L | default: [-160*self.SC, -200*self.SC, 0.01]
+		self.aeleron_L_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
+		print(self.aeleron_R_right)
+
+	def getNewPoints(self, x, y, z, yaw, pitch, roll, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
 		"""
 		Function to get new ENU points of the vehicle in inertial space from Euler angles, NED displacements, and base
 		drawing contained within the __init__ function. That is, points to be remapped are contained within self.vertices
@@ -234,6 +246,13 @@ class VehicleGeometry():
 		:param roll: rotation about body x-axis [rad]
 		:return: Points in inertial EAST-NORTH-UP frame (for plotting)
 		"""
+		# EXPERIMENTAL Test!!!
+		self.updateAngles(Throttle=Throttle, Aileron=Aileron, Elevator=Elevator, Rudder=Rudder)
+		self.vertices[7] = self.aeleron_R_right
+		self.vertices[8] = self.aeleron_R_left
+		self.vertices[13] = self.aeleron_L_right
+		self.vertices[14] = self.aeleron_L_left
+
 		newPoints = self.vertices
 
 		rmatrix = Rotations.euler2DCM(yaw, pitch, roll) # Get the rotation matrix from the euler angles using euler2dcm()

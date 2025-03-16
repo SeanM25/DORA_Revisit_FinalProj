@@ -27,6 +27,8 @@ class vehicleDisplay(QtWidgets.QWidget):
 		"""
 		super().__init__(parent)
 
+		self.test_angle = 0 # TEST!!!
+
 		self.usedLayout = QtWidgets.QVBoxLayout()
 		self.setLayout(self.usedLayout)
 		self.trackPlane = True
@@ -137,13 +139,13 @@ class vehicleDisplay(QtWidgets.QWidget):
 		"""
 		return QtCore.QSize(720, 480)
 
-	def updateVehiclePosition(self, newState):
+	def updateVehiclePosition(self, newState: States.vehicleState):
 		"""
 		Updates the vehicle position
 
 		:param newState: vehicleState instance to extract the needed parameters from
 		"""
-		self.updateVehiclePositionSignal.emit([newState.pn, newState.pe, newState.pd, newState.yaw, newState.pitch, newState.roll])
+		self.updateVehiclePositionSignal.emit([newState.pn, newState.pe, newState.pd, newState.yaw, newState.pitch, newState.roll, newState.Throttle, newState.Aileron, newState.Elevator, newState.Rudder]) # test!!! updated
 		return
 
 	def drawNewVehiclePosition(self, newPosition):
@@ -154,6 +156,8 @@ class vehicleDisplay(QtWidgets.QWidget):
 		"""
 		# print(newPosition)
 		# we simply create a new set of vertices
+		# self.test_angle+=1
+		# self.vehicleDrawInstance.updateAngle(angle=self.test_angle) # <--TEST!!!
 
 		rawPoints = self.vehicleDrawInstance.getNewPoints(*newPosition)
 		# print(rawPoints)

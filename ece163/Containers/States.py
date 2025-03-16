@@ -5,7 +5,7 @@ import math
 testingAbs_tol = 1e-6
 
 class vehicleState:
-    def __init__(self, pn=0.0, pe=0.0, pd=0.0, u=0.0, v=0.0, w=0.0, yaw=0.0, pitch=0.0, roll=0.0, p=0.0, q=0.0, r=0.0, dcm=None):
+    def __init__(self, pn=0.0, pe=0.0, pd=0.0, u=0.0, v=0.0, w=0.0, yaw=0.0, pitch=0.0, roll=0.0, p=0.0, q=0.0, r=0.0, dcm=None, Throttle=0.5, Aileron=60.0, Elevator=30.0, Rudder=40.0):
         """
         Defines the vehicle states to define the vehicle current position and orientation. Positions are in NED
         coordinates, velocity is ground speed in body coordinates, we carry both the Euler angles and the DCM together,
@@ -28,6 +28,11 @@ class vehicleState:
 
         :return: None
         """
+        # CONTROL SURFACES Test!!!
+        self.Throttle = Throttle
+        self.Aileron = Aileron
+        self.Elevator = Elevator
+        self.Rudder = Rudder
         # positions
         self.pn = pn
         self.pe = pe

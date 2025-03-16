@@ -147,7 +147,7 @@ class testInterface(baseInterface.baseInterface):
 
 	def sliderChangeResponse(self, newValue = 0.0, name= ""):
 		self.updatePlotsOn()
-
+		
 		#Don't use this part if the controller 
 		if not self.joystick.active:
 			if name in ['yaw', 'pitch', 'roll']:
