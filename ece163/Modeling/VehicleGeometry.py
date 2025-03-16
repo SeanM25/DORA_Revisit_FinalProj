@@ -218,7 +218,122 @@ class VehicleGeometry():
 
 					  [-220*self.SC, -41*self.SC, 37*self.SC], # [52]
 
-					  [-578*self.SC, -41*self.SC, 37*self.SC] # [53]
+					  [-578*self.SC, -41*self.SC, 37*self.SC], # [53]
+
+
+					  [-578*self.SC, -41*self.SC, 0], # [54]
+
+					  [-578*self.SC, -41*self.SC, 37*self.SC], # [55]
+
+					  [160*self.SC, -41*self.SC, 0], # [56]
+
+
+					  [160*self.SC, -41*self.SC, 37*self.SC], # [57]
+
+					  [160*self.SC, -41*self.SC, 0], # [58]
+
+					  [-578*self.SC, -41*self.SC, 37*self.SC], # [59]
+
+
+					  # Body Right Side same as left but with opposite Y
+
+						[160*self.SC, 41*self.SC, 37*self.SC], # [60]
+
+						[95*self.SC, 41*self.SC, 102*self.SC], # [61]
+
+						[95*self.SC, 41*self.SC, 37*self.SC], # [62]
+
+
+					  [95*self.SC, 41*self.SC, 102*self.SC], # [63]
+
+					  [95*self.SC, 41*self.SC, 37*self.SC], # [64]
+
+					  [-220*self.SC, 41*self.SC, 37*self.SC], # [65]
+
+
+					  [-220*self.SC, 41*self.SC, 37*self.SC], # [66]
+
+					  [-220*self.SC, 41*self.SC, 102*self.SC], # [67]
+
+					  [95*self.SC, 41*self.SC, 102*self.SC], # [68]
+
+
+					  [-220*self.SC, 41*self.SC, 102*self.SC], # [69]
+
+					  [-220*self.SC, 41*self.SC, 37*self.SC], # [70]
+
+					  [-578*self.SC, 41*self.SC, 37*self.SC], # [71]
+
+
+					  [-578*self.SC, 41*self.SC, 0], # [72]
+
+					  [-578*self.SC, 41*self.SC, 37*self.SC], # [73]
+
+					  [160*self.SC, 41*self.SC, 0], # [74]
+
+
+					  [160*self.SC, 41*self.SC, 37*self.SC], # [75]
+
+					  [160*self.SC, 41*self.SC, 0], # [76]
+
+					  [-578*self.SC, 41*self.SC, 37*self.SC], # [77]
+
+
+					  # Body Front
+
+					  [160*self.SC, 41*self.SC, 0], # [78]
+
+					  [160*self.SC, 41*self.SC, 37*self.SC], # [79]
+
+					  [160*self.SC, -41*self.SC, 37*self.SC], # [80]
+
+
+					  [160*self.SC, -41*self.SC, 37*self.SC], # [81]
+
+					  [160*self.SC, -41*self.SC, 0], # [82]
+
+					  [160*self.SC, 41*self.SC, 0], # [83]
+
+
+					  [160*self.SC, 41*self.SC, 37*self.SC], # [84]
+
+					  [160*self.SC, -41*self.SC, 37*self.SC], # [85]
+
+					  [95*self.SC, -41*self.SC, 102*self.SC], # [86]
+
+
+
+					  [95*self.SC, -41*self.SC, 102*self.SC], # [87]
+
+					  [95*self.SC, 41*self.SC, 102*self.SC], # [88]
+
+					  [160*self.SC, 41*self.SC, 37*self.SC] # [89]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 				   
 				   ]
@@ -291,14 +406,54 @@ class VehicleGeometry():
 
 					  [48, 49, 50],
 
-					  [51, 52, 53]
+					  [51, 52, 53],
+
+					  [54, 55, 56],
+
+					  [57, 58, 59],
+
+					  # Body Right Side
+
+					  [60, 61, 62],
+
+					  [63, 64, 65],
+
+					  [66, 67, 68],
+
+					  [69, 70, 71],
+
+					  [72, 73, 74],
+
+					  [75, 76, 77],
+
+					  # Body Front
+
+					  [78, 79, 80],
+
+					  [81, 82, 83],
+
+					  [84, 85, 86],
+
+					  [87, 88, 89]
 
 
 
 					]
 		
 
-		self.colors = [green, green, green, green, red, red, green, green, red, red, green, green, white, white, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue]
+		self.colors = [green, green, green, green, red, red, green, green, red, red, green, green, white, white, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue,
+				 
+				 		yellow, yellow, yellow, yellow
+				 
+
+
+				 
+				 
+				 
+				 
+				 ]
+
+
 
 		'''
 
