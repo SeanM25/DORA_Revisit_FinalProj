@@ -131,99 +131,80 @@ class VehicleGeometry():
 
 						# Solid Wing L (of wing)
 
-						[-100*SC, -600*SC, 0], # [15] front right of Solid Wing L / front left of aeleron flap L
-						[-160*SC, -600*SC, 0], # [16] back right of Solid Wing L
-						[-160*SC, -700*SC, 0], # [17] back left of Solid Wing L
+						[-100*self.SC, -600*self.SC, 0], # [15] front right of Solid Wing L / front left of aeleron flap L
+						[-160*self.SC, -600*self.SC, 0], # [16] back right of Solid Wing L
+						[-160*self.SC, -700*self.SC, 0], # [17] back left of Solid Wing L
 
 						# Body Top
 
-					  [160*SC, 41*SC, 0], # [18]
+						[160*self.SC, 41*self.SC, 0], # [18]
 
-					  [160*SC, -41*SC, 0], # [19]
+						[160*self.SC, -41*self.SC, 0], # [19]
 
-					  [-578*SC, -41*SC, 0], # [20]
+						[-578*self.SC, -41*self.SC, 0], # [20]
 
-					  [-578*SC, -41*SC, 0], # [21]
+						[-578*self.SC, -41*self.SC, 0], # [21]
 
-					  [-578*SC, 41*SC, 0], # [22]
+						[-578*self.SC, 41*self.SC, 0], # [22]
 
-					  [160*SC, 41*SC, 0], # [23]
+						[160*self.SC, 41*self.SC, 0], # [23]
 
-					  # Body Bottom
+						# Body Bottom
 
-					  [95*SC, 41*SC, 102*SC], # [24]
+						[95*self.SC, 41*self.SC, 102*self.SC], # [24]
 
-					  [95*SC, -41*SC, 102*SC], # [25]
+						[95*self.SC, -41*self.SC, 102*self.SC], # [25]
 
-					  [-220*SC, -41*SC, 102*SC], # [26]
-
-
-					  [-220*SC, -41*SC, 102*SC], # [27]
-
-					  [-220*SC, 41*SC, 102*SC], # [28]
-
-					  [95*SC, 41*SC, 102*SC], # [29]
-
-					  [-220*SC, -41*SC, 102*SC], # [30]
-
-					  [-220*SC, 41*SC, 102*SC], # [31]
-
-					  [-578*SC, -41*SC, 37*SC], # [32]
+						[-220*self.SC, -41*self.SC, 102*self.SC], # [26]
 
 
-					  [-578*SC, -41*SC, 37*SC], # [33]
+						[-220*self.SC, -41*self.SC, 102*self.SC], # [27]
 
-					  [-578*SC, 41*SC, 37*SC], # [34]
+						[-220*self.SC, 41*self.SC, 102*self.SC], # [28]
 
-					  [-220*SC, 41*SC, 102*SC], # [35]
+						[95*self.SC, 41*self.SC, 102*self.SC], # [29]
 
+						[-220*self.SC, -41*self.SC, 102*self.SC], # [30]
 
-					  [-578*SC, -41*SC, 0], # [36]
+						[-220*self.SC, 41*self.SC, 102*self.SC], # [31]
 
-					  [-578*SC, -41*SC, 37*SC], # [37]
-
-					  [-578*SC, 41*SC, 37*SC], # [38]
-
-
-					  [-578*SC, 41*SC, 37*SC], # [39]
-
-					  [-578*SC, 41*SC, 0], # [40]
-
-					  [-578*SC, -41*SC, 0], # [41]
-
-					  # Body Left Side
-
-					  [160*SC, -41*SC, 37*SC], # [42]
-
-					  [95*SC, -41*SC, 102*SC], # [43]
-
-					  [95*SC, -41*SC, 37*SC], # [44]
+						[-578*self.SC, -41*self.SC, 37*self.SC], # [32]
 
 
-					  [95*SC, 41*SC, 102*SC], # [45]
+						[-578*self.SC, -41*self.SC, 37*self.SC], # [33]
 
-					  [95*SC, 41*SC, 37*SC], # [46]
+						[-578*self.SC, 41*self.SC, 37*self.SC], # [34]
 
-					  [-220*SC, -41*SC, 37*SC] # [47]
-
-					  
+						[-220*self.SC, 41*self.SC, 102*self.SC], # [35]
 
 
+						[-578*self.SC, -41*self.SC, 0], # [36]
+
+						[-578*self.SC, -41*self.SC, 37*self.SC], # [37]
+
+						[-578*self.SC, 41*self.SC, 37*self.SC], # [38]
 
 
+						[-578*self.SC, 41*self.SC, 37*self.SC], # [39]
+
+						[-578*self.SC, 41*self.SC, 0], # [40]
+
+						[-578*self.SC, -41*self.SC, 0], # [41]
+
+						# Body Left Side
+
+						[160*self.SC, -41*self.SC, 37*self.SC], # [42]
+
+						[95*self.SC, -41*self.SC, 102*self.SC], # [43]
+
+						[95*self.SC, -41*self.SC, 37*self.SC], # [44]
 
 
+						[95*self.SC, 41*self.SC, 102*self.SC], # [45]
 
+						[95*self.SC, 41*self.SC, 37*self.SC], # [46]
 
-
-
-
-
-
-
-
-
-				   
+						[-220*self.SC, -41*self.SC, 37*self.SC] # [47]
 				   ]
 		
 
