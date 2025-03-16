@@ -417,49 +417,33 @@ class VehicleGeometry:
         return
 
     def updateAngles(self, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
-
+		### Ailerons
         self.aeleronFlapRAngle = (Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
         self.aeleronFlapLAngle = (-Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
         # print(self.aeleron_R_right)
-        # Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
+        ## Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
         self.aeleron_R_right = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             600 * self.SC,
             self.aelronFlapRadius * math.sin(self.aeleronFlapRAngle * math.pi / 180),
         ]  # back right of aeleronn flap R | default: [-160*self.SC, 600*self.SC, 0.01]
         self.aeleron_R_left = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             200 * self.SC,
             self.aelronFlapRadius * math.sin(self.aeleronFlapRAngle * math.pi / 180),
         ]  # back left of aeleronn flap R | default: [-160*self.SC, 200*self.SC, 0.01]
         self.aeleron_L_right = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             -200 * self.SC,
-            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180),
+            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180)
         ]  # back right of aeleron flap L | default: [-160*self.SC, -200*self.SC, 0.01]
         self.aeleron_L_left = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             -600 * self.SC,
-            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180),
+            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180)
         ]  # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
         # print(self.aeleron_R_right)
-        # Propellars
+        ### Propellars
         # print(self.propellarAngle)
         self.PropellarRadius = (
             113 * self.SC
@@ -472,45 +456,25 @@ class VehicleGeometry:
         self.propellar_R_top = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 0.07),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 + 0.07),
+            30 * self.SC + self.PropellarRadius* math.sin(self.propellarAngle * math.pi / 180 + 0.07)
         ]
         self.propellar_R_bottom = [
             161 * self.SC,
-            self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 - 0.07),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 - 0.07),
+            self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 - 0.07), 
+            30 * self.SC + self.PropellarRadius* math.sin(self.propellarAngle * math.pi / 180 - 0.07)
         ]
         self.propellar_L_top = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 3.07),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 + 3.07),
+            30 * self.SC + self.PropellarRadius* math.sin(self.propellarAngle * math.pi / 180 + 3.07)
         ]
         self.propellar_L_bottom = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 3.21),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 + 3.21),
+            30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 + 3.21)
         ]
 
-    def getNewPoints(
-        self,
-        x,
-        y,
-        z,
-        yaw,
-        pitch,
-        roll,
-        Throttle=0.0,
-        Aileron=0.0,
-        Elevator=0.0,
-        Rudder=0.0,
-    ):
+    def getNewPoints(self,x,y,z,yaw,pitch,roll,Throttle=0.0,Aileron=0.0,Elevator=0.0,Rudder=0.0):
         """
         Function to get new ENU points of the vehicle in inertial space from Euler angles, NED displacements, and base
         drawing contained within the __init__ function. That is, points to be remapped are contained within self.vertices
@@ -524,9 +488,7 @@ class VehicleGeometry:
         :return: Points in inertial EAST-NORTH-UP frame (for plotting)
         """
         # EXPERIMENTAL Test!!!
-        self.updateAngles(
-            Throttle=Throttle, Aileron=Aileron, Elevator=Elevator, Rudder=Rudder
-        )
+        self.updateAngles(Throttle=Throttle, Aileron=Aileron, Elevator=Elevator, Rudder=Rudder)
         # aileron
         self.vertices[7] = self.aeleron_R_right
         self.vertices[8] = self.aeleron_R_left
@@ -540,30 +502,15 @@ class VehicleGeometry:
 
         newPoints = self.vertices
 
-        rmatrix = Rotations.euler2DCM(
-            yaw, pitch, roll
-        )  # Get the rotation matrix from the euler angles using euler2dcm()
+        rmatrix = Rotations.euler2DCM(yaw, pitch, roll)  # Get the rotation matrix from the euler angles using euler2dcm()
 
-        coords_rotated = MatrixMath.multiply(
-            newPoints, rmatrix
-        )  # multiply aircraft points by the rotation matrix to apply the appropriate rotation in NED
+        coords_rotated = MatrixMath.multiply(newPoints, rmatrix)  # multiply aircraft points by the rotation matrix to apply the appropriate rotation in NED
 
         displacements = [x, y, z]  # Given x, y, z NED displacements
 
-        for row in range(
-            len(coords_rotated[0])
-        ):  # Go through the rows of the vehicle points matrix
-
-            for col in range(
-                (len(coords_rotated))
-            ):  # Go through the cols of the vehicle points matrix
-
-                coords_rotated[col][row] += displacements[
-                    row
-                ]  # Add the x displacement to col 1, y to 2, and z to 3 for each row in nx3
-
-        newPoints = Rotations.ned2enu(
-            coords_rotated
-        )  # Convert dispalced NED matrix to ENU coords
+        for row in range(len(coords_rotated[0])):  # Go through the rows of the vehicle points matrix
+            for col in range((len(coords_rotated))):  # Go through the cols of the vehicle points matrix
+                coords_rotated[col][row] += displacements[row]  # Add the x displacement to col 1, y to 2, and z to 3 for each row in nx3
+        newPoints = Rotations.ned2enu(coords_rotated)  # Convert dispalced NED matrix to ENU coords
 
         return newPoints  # Return new ENU matrix of vehicle points
