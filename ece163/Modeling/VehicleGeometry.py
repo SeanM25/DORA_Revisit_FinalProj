@@ -66,67 +66,68 @@ class VehicleGeometry():
 		# actual MAV model from Beard Chapter 2
 
 		# define MAV body parameters
-		scalingUnit = VPC.b / 6.0	# scaling determined by the wingspan of the aircraft in VehiclePhysicalConstants
+		SC = 0.001 # scalingUnit # VPC.b / 6.0	# scaling determined by the wingspan of the aircraft in VehiclePhysicalConstants
 
-		fuse_h = scalingUnit
-		fuse_w = scalingUnit
-		fuse_l1 = 2 * scalingUnit
-		fuse_l2 = scalingUnit
-		fuse_l3 = 4 * scalingUnit
-		wing_l = scalingUnit
-		wing_w = 6 * scalingUnit	# will match the wingspan (VPC.b) in meters exactly
-		tail_h = scalingUnit
-		tail_l = scalingUnit
-		tail_w = 2 * scalingUnit
+		# fuse_h = scalingUnit
+		# fuse_w = scalingUnit
+		# fuse_l1 = 2 * scalingUnit
+		# fuse_l2 = scalingUnit
+		# fuse_l3 = 4 * scalingUnit
+		# wing_l = scalingUnit
+		# wing_w = 6 * scalingUnit	# will match the wingspan (VPC.b) in meters exactly
+		# tail_h = scalingUnit
+		# tail_l = scalingUnit
+		# tail_w = 2 * scalingUnit
 
 		wing_length = 700 # mm
 
 		wing_depth = 100 # mm
 
+		# Editable flap coordinates
+		self.aelronFlapRadius = 60 # for calculating the angle coordinates
+		self.aeleron_R_right = [-160*SC, 600*SC, 0.01]
+		self.aeleron_R_left = [-160*SC, 200*SC, 0.01]
+		self.aeleron_L_right = [-160*SC, -200*SC, 0.01]
+		self.aeleron_L_left = [-160*SC, -600*SC, 0.01]
 
 
 		self.vertices = [
 						
 						# Main Wing Body
 						
-						[0, -700, 0], # Front Right Left Corner of Wing  [0]
-				   
-				   		 [0, 700, 0], # Front Left Corner of Wing [1]
-							
-						[-100, 700, 0], # Back Left Corner of Wing [2]
+						[0, -700*SC, 0], # [0] Front Left Corner of Wing 
+				   		[0, 700*SC, 0], # [1] Front Right Corner of Wing 
+						[-100*SC, 700*SC, 0], # [2] Back Right Corner of Wing / front right of solid Wing R
+						[-100*SC, -700*SC, 0], # [3] Back Left Corner of Wing / front left of solid Wing L
 
-						[-100, -700, 0], # Back Right Corner of Wing [3]
+						# Solid Wing R of Wing
 
-						# Solid Piece 1 of Wing
+						[-160*SC, 700*SC, 0], # [4] back right corner of Solid Wing R
+						[-160*SC, 600*SC, 0], # [5] back left corner of Solid Wing R
+						[-100*SC, 600*SC, 0], # [6] front left corner of Solid Wing R / front right of aeleronn flap R
 
-						[-160, 700, 0], # [4]
+						# aeleron Flap R: adjustable
 
-						[-160, 600, 0], # [5]
+						self.aeleron_R_right, # [7] back right of aeleronn flap R
+						self.aeleron_R_left, # [8] back left of aeleronn flap R
 
-						[-100, 600, 0], # [6]
+						# Solid Wing C of Wing
 
-						# Flap 1
+						[-100*SC, 200*SC, 0], # [9] front right of Solid Wing C / front left of aeleronn flap R
+						[-160*SC, 200*SC, 0], # [10] back right of Solid Wing C
+						[-160*SC, -200*SC, 0], # [11] back left of Solid Wing C
+						[-100*SC, -200*SC, 0], # [12] front left of Solid Wing C / front right of aeleron flap L
 
-						[-160, 200, 0], # [7]
-
-						[-100, 200, 0], # [8]
-
-						# Solid Piece 2 of Wing
-
-						[-160, -200, 0], # [9]
-
-						[-100, -200, 0], # [10]
-
-						# Flap 3  
+						# aeleron Flap L: adjustable
 						
-						[-160, -600, 0], # [11]
+						self.aeleron_L_right, # [13] back right of aeleron flap L
+						self.aeleron_L_left, # [14] back left of aeleron flap L
 
-						[-100, -600, 0], # [12]
+						# Solid Wing L (of wing)
 
-						# Solid Piece 3
-
-						[-160, -700, 0] # [13]
-						   
+						[-100*SC, -600*SC, 0], # [15] front right of Solid Wing L / front left of aeleron flap L
+						[-160*SC, -600*SC, 0], # [16] back right of Solid Wing L
+						[-160*SC, -700*SC, 0] # [17] back left of Solid Wing L
 				   
 				   ]
 		
@@ -135,47 +136,41 @@ class VehicleGeometry():
 
 					# Main Wing
 
-					  [0, 1, 2], # Connect Back Left, Front Right, and Back Right Wing vertices
+					  [0, 1, 2], # Connect Front Left, Front Right, and Back Right Wing vertices
 				
-					  [0, 3, 2],
+					  [0, 3, 2], # Connect Front Left, Back Left, and Back Right Wing vertices
 
-					  # Solid Green Piece 1
+					  # Solid Wing R - green
 
-					  [5, 6, 2],
+					  [6, 2, 4], # Connect Front Left, Front Right, and Back Right Solid Wing R vertices
 
-					  [2, 4, 5],
+					  [6, 5, 4], # Connect Front Left, Back Left, and Back Right Solid Wing R vertices
 
-					  # Flap 1
+					  # Flap R
 
-					  [5, 6, 7],
+					  [9, 6, 7], # Connect Front Left, Front Right, and Back Right Flap R vertices
 
-					  [6, 7, 8],
+					  [9, 8, 7], # Connect Front Left, Back Left, and Back Right Flap vertices
 
-					  # Solid Green Piece 2
+					  # Solid Wing C
 
-					  [8, 7, 9],
+					  [12, 9, 10], # Connect Front Left, Front Right, and Back Right Solid Wing C vertices
 
-					  [9, 10, 8],
+					  [12, 11, 10], # Connect Front Left, Back Left, and Back Right Solid Wing C vertices
 
-					  # Flap 2
+					  # Flap L
 
-					  [11, 12, 10],
+					  [15, 12, 13], # Connect Front Left, Front Right, and Back Right Flap L vertices
 
-					  [10, 9, 11],
+					  [15, 14, 13], # Connect Front Left, Back Left, and Back Right Flap L vertices
 
-					  [12, 11, 13],
+					  # Solid Wing L
 
-					  [13, 3, 12]
+					  [3, 15, 16], # Connect Front Left, Front Right, and Back Right Solid Wing L vertices
 
-
-
-
-					 
-					 
-
+					  [3, 17, 16] # Connect Front Left, Back Left, and Back Right Solid Wing L vertices
 						
-						
-						]
+					]
 		
 
 		self.colors = [yellow, blue, green, green, red, red, green, green, red, red, green, green]
