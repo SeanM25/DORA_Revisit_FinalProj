@@ -7,6 +7,7 @@ arbitrary size for good rendering in the display window.
 from ..Utilities import MatrixMath
 from ..Utilities import Rotations
 from ..Constants import VehiclePhysicalConstants as VPC
+import math
 
 baseUnit = 1.0
 
@@ -84,12 +85,15 @@ class VehicleGeometry():
 		wing_depth = 100 # mm
 
 		# Editable flap coordinates
-		self.aelronFlapRadius = 60 # for calculating the angle coordinates
-		self.aeleron_R_right = [-160*SC, 600*SC, 0.01]
-		self.aeleron_R_left = [-160*SC, 200*SC, 0.01]
-		self.aeleron_L_right = [-160*SC, -200*SC, 0.01]
-		self.aeleron_L_left = [-160*SC, -600*SC, 0.01]
-
+		self.aelronFlapRadius = 60*SC # CONST: for calculating the angle based coordinates
+		self.aeleronFlapRAngle = -30 # adjusts based on controller: for calculating the angle based coordinates
+		self.aeleronFlapLAngle = 30 # adjusts based on controller: for calculating the angle based coordinates
+		
+		# Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
+		self.aeleron_R_right = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 600*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back right of aeleronn flap R | default: [-160*SC, 600*SC, 0.01]
+		self.aeleron_R_left = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 200*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back left of aeleronn flap R | default: [-160*SC, 200*SC, 0.01]
+		self.aeleron_L_right = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -200*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back right of aeleron flap L | default: [-160*SC, -200*SC, 0.01]
+		self.aeleron_L_left = [-160*SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -600*SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back left of aeleron flap L | default: [-160*SC, -600*SC, 0.01]
 
 		self.vertices = [
 						
