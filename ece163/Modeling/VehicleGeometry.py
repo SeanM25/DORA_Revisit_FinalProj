@@ -200,42 +200,25 @@ class VehicleGeometry():
 						[95*self.SC, -41*self.SC, 37*self.SC], # [44]
 
 
-					  [95*SC, -41*SC, 102*SC], # [45]
+					  [95*self.SC, -41*self.SC, 102*self.SC], # [45]
 
-					  [95*SC, -41*SC, 37*SC], # [46]
+					  [95*self.SC, -41*self.SC, 37*self.SC], # [46]
 
-					  [-220*SC, -41*SC, 37*SC], # [47]
-
-
-					  [-220*SC, -41*SC, 37*SC], # [48]
-
-					  [-220*SC, -41*SC, 102*SC], # [49]
-
-					  [95*SC, -41*SC, 102*SC], # [50]
+					  [-220*self.SC, -41*self.SC, 37*self.SC], # [47]
 
 
-					  [-220*SC, -41*SC, 102*SC], # [51]
+					  [-220*self.SC, -41*self.SC, 37*self.SC], # [48]
 
-					  [-220*SC, -41*SC, 37*SC], # [52]
+					  [-220*self.SC, -41*self.SC, 102*self.SC], # [49]
 
-					  [-578*SC, -41*SC, 37*SC] # [53]
-
-
+					  [95*self.SC, -41*self.SC, 102*self.SC], # [50]
 
 
+					  [-220*self.SC, -41*self.SC, 102*self.SC], # [51]
 
+					  [-220*self.SC, -41*self.SC, 37*self.SC], # [52]
 
-
-
-
-
-
-
-
-
-
-
-
+					  [-578*self.SC, -41*self.SC, 37*self.SC] # [53]
 
 				   
 				   ]
@@ -361,15 +344,15 @@ class VehicleGeometry():
 
 	def updateAngles(self, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
 		
-		self.aeleronFlapRAngle = -Aileron # adjusts based on controller: for calculating the angle based coordinates
-		self.aeleronFlapLAngle = Aileron # adjusts based on controller: for calculating the angle based coordinates
-		print(self.aeleron_R_right)
+		self.aeleronFlapRAngle = Aileron*2 # adjusts based on controller: for calculating the angle based coordinates
+		self.aeleronFlapLAngle = -Aileron*2 # adjusts based on controller: for calculating the angle based coordinates
+		# print(self.aeleron_R_right)
 		# Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
 		self.aeleron_R_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back right of aeleronn flap R | default: [-160*self.SC, 600*self.SC, 0.01]
 		self.aeleron_R_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), 200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapRAngle*math.pi/180)] # back left of aeleronn flap R | default: [-160*self.SC, 200*self.SC, 0.01]
 		self.aeleron_L_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back right of aeleron flap L | default: [-160*self.SC, -200*self.SC, 0.01]
 		self.aeleron_L_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
-		print(self.aeleron_R_right)
+		# print(self.aeleron_R_right)
 
 	def getNewPoints(self, x, y, z, yaw, pitch, roll, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
 		"""

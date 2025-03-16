@@ -1,15 +1,16 @@
 Traceback (most recent call last):
-  File "C:\Users\seanm\ECE163\project\dorarevisit\Chapter7.py", line 342, in <module>
-    ourWindow = Chapter6()
+  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/Chapter4.py", line 217, in <module>
+    ourWindow = Chapter4()
                 ^^^^^^^^^^
-  File "C:\Users\seanm\ECE163\project\dorarevisit\Chapter7.py", line 42, in __init__
+  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/Chapter4.py", line 39, in __init__
     super().__init__(parent)
-  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Display\baseInterface.py", line 94, in __init__
+  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Display/baseInterface.py", line 94, in __init__
     self.vehicleInstance = vehicleDisplay.vehicleDisplay()
                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Display\vehicleDisplay.py", line 52, in __init__
+  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Display/vehicleDisplay.py", line 54, in __init__
     self.vehicleDrawInstance = VehicleGeometry.VehicleGeometry()
                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Modeling\VehicleGeometry.py", line 136, in __init__
-    [-160*SC, -700*SC, 0] # [17] back left of Solid Wing L
-TypeError: list indices must be integers or slices, not tuple
+  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Modeling/VehicleGeometry.py", line 203, in __init__
+    [95*SC, -41*SC, 102*SC], # [45]
+        ^^
+NameError: name 'SC' is not defined. Did you mean: 'self.SC'?
