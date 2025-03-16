@@ -200,11 +200,44 @@ class VehicleGeometry():
 						[95*self.SC, -41*self.SC, 37*self.SC], # [44]
 
 
-						[95*self.SC, 41*self.SC, 102*self.SC], # [45]
+					  [95*SC, -41*SC, 102*SC], # [45]
 
-						[95*self.SC, 41*self.SC, 37*self.SC], # [46]
+					  [95*SC, -41*SC, 37*SC], # [46]
 
-						[-220*self.SC, -41*self.SC, 37*self.SC] # [47]
+					  [-220*SC, -41*SC, 37*SC], # [47]
+
+
+					  [-220*SC, -41*SC, 37*SC], # [48]
+
+					  [-220*SC, -41*SC, 102*SC], # [49]
+
+					  [95*SC, -41*SC, 102*SC], # [50]
+
+
+					  [-220*SC, -41*SC, 102*SC], # [51]
+
+					  [-220*SC, -41*SC, 37*SC], # [52]
+
+					  [-578*SC, -41*SC, 37*SC] # [53]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				   
 				   ]
 		
 
@@ -271,14 +304,18 @@ class VehicleGeometry():
 
 					  [42, 43, 44],
 
-					  [45, 46, 47]
+					  [45, 46, 47],
+
+					  [48, 49, 50],
+
+					  [51, 52, 53]
 
 
 
 					]
 		
 
-		self.colors = [green, green, green, green, red, red, green, green, red, red, green, green, white, white, blue, blue, blue, blue, blue, blue, blue, blue]
+		self.colors = [green, green, green, green, red, red, green, green, red, red, green, green, white, white, blue, blue, blue, blue, blue, blue, blue, blue, blue, blue]
 
 		'''
 
