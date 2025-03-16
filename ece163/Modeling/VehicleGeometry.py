@@ -79,6 +79,109 @@ class VehicleGeometry():
 		tail_l = scalingUnit
 		tail_w = 2 * scalingUnit
 
+		wing_length = 700 # mm
+
+		wing_depth = 100 # mm
+
+
+
+		self.vertices = [
+						
+						# Main Wing Body
+						
+						[0, -700, 0], # Front Right Left Corner of Wing  [0]
+				   
+				   		 [0, 700, 0], # Front Left Corner of Wing [1]
+							
+						[-100, 700, 0], # Back Left Corner of Wing [2]
+
+						[-100, -700, 0], # Back Right Corner of Wing [3]
+
+						# Solid Piece 1 of Wing
+
+						[-160, 700, 0], # [4]
+
+						[-160, 600, 0], # [5]
+
+						[-100, 600, 0], # [6]
+
+						# Flap 1
+
+						[-160, 200, 0], # [7]
+
+						[-100, 200, 0], # [8]
+
+						# Solid Piece 2 of Wing
+
+						[-160, -200, 0], # [9]
+
+						[-100, -200, 0], # [10]
+
+						# Flap 3  
+						
+						[-160, -600, 0], # [11]
+
+						[-100, -600, 0], # [12]
+
+						# Solid Piece 3
+
+						[-160, -700, 0] # [13]
+						   
+				   
+				   ]
+		
+
+		self.faces = [
+
+					# Main Wing
+
+					  [0, 1, 2], # Connect Back Left, Front Right, and Back Right Wing vertices
+				
+					  [0, 3, 2],
+
+					  # Solid Green Piece 1
+
+					  [5, 6, 2],
+
+					  [2, 4, 5],
+
+					  # Flap 1
+
+					  [5, 6, 7],
+
+					  [6, 7, 8],
+
+					  # Solid Green Piece 2
+
+					  [8, 7, 9],
+
+					  [9, 10, 8],
+
+					  # Flap 2
+
+					  [11, 12, 10],
+
+					  [10, 9, 11],
+
+					  [12, 11, 13],
+
+					  [13, 3, 12]
+
+
+
+
+					 
+					 
+
+						
+						
+						]
+		
+
+		self.colors = [yellow, blue, green, green, red, red, green, green, red, red, green, green]
+
+		'''
+
 		self.vertices = [[fuse_l1, 0, 0],  # point 1 [0]
 						 [fuse_l2, fuse_w / 2.0, -fuse_h / 2.0],  # point 2 [1]
 						 [fuse_l2, -fuse_w / 2.0, -fuse_h / 2.0],  # point 3 [2]
@@ -104,18 +207,19 @@ class VehicleGeometry():
 					  [5, 1, 2],
 					  [5, 1, 4],
 					  [5, 3, 4],
-					  [6, 7, 9],
-					  [7, 8, 9],
+					  [6, 7, 9], # Wing Orig 6 7 9
+					  [7, 8, 9], # Wing Orig 7 8 9
 					  [10, 11, 12],
 					  [10, 12, 13],
 					  [5, 14, 15]]
+					  
 
 		self.colors = [yellow, yellow, yellow, yellow,
 					   blue, blue, blue,
 					   red,
 					   green, green, green, green,
 					   blue]
-
+'''
 		return
 
 	def getNewPoints(self, x, y, z, yaw, pitch, roll):
