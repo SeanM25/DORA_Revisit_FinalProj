@@ -167,6 +167,11 @@ class VehicleGeometry:
             + self.PropellarRadius
             * math.sin(self.propellarAngle * math.pi / 180 + 3.21),
         ]
+        
+		# Elevator
+        self.elevator_L_rearflap = [-616*self.SC, -175*self.SC, 37*self.SC]
+        self.elevator_R_rearflap = [-616*self.SC, 175*self.SC, 37*self.SC]
+        
 
         self.vertices = [
             # Main Wing Body
@@ -277,8 +282,17 @@ class VehicleGeometry:
             self.propellar_L_top,  # [161*self.SC, -113*self.SC, 22*self.SC], # [93] propellar left top
             self.propellar_L_bottom,  # [161*self.SC, -113*self.SC, 38*self.SC], # [94] propelar left bottom
             [161 * self.SC, 0, 30 * self.SC],  # [95]
+            
             # Elevator
+            self.elevator_L_rearflap, # [96] elevator Left Rearflap
+			self.elevator_R_rearflap, #[97] elevator Right Rearflap
+            [-578 * self.SC, 175 * self.SC, 37 * self.SC], # [98] elevator Left Rear
+            [-578 * self.SC, -175 * self.SC, 37 * self.SC], # [99] elevator Right Rear
+            [-498 * self.SC, 175 * self.SC, 37 * self.SC], # [100] elevator Left Front
+            [-498 * self.SC, -175 * self.SC, 37 * self.SC], # [101] elevator Right Front
+            
         ]
+        
 
         self.faces = [
             # Main Wing
@@ -331,6 +345,11 @@ class VehicleGeometry:
             # Propeller
             [90, 91, 92],
             [93, 94, 95],
+            # Elevator
+			[96, 97, 98],
+			[96, 99, 98],
+			[98, 99, 100],
+			[99, 100, 101],
         ]
 
         self.colors = [
@@ -372,6 +391,10 @@ class VehicleGeometry:
             yellow,
             red,
             red,
+            red,
+            red,
+            green,
+            green,
         ]
 
         """
