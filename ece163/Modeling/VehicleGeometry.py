@@ -31,6 +31,8 @@ class VehicleGeometry():
 		white = [1.,1.,1.,1]
 		black = [0., 0., 0., 0.]
 
+		# Add more colors ?
+
 		# squat squarish vehicle as a more complicated practice
 
 		# self.vertices = [[baseUnit,0,0], # [0] nose
@@ -131,7 +133,96 @@ class VehicleGeometry():
 
 						[-100*SC, -600*SC, 0], # [15] front right of Solid Wing L / front left of aeleron flap L
 						[-160*SC, -600*SC, 0], # [16] back right of Solid Wing L
-						[-160*SC, -700*SC, 0] # [17] back left of Solid Wing L
+						[-160*SC, -700*SC, 0], # [17] back left of Solid Wing L
+
+						# Body Top
+
+					  [160*SC, 41*SC, 0], # [18]
+
+					  [160*SC, -41*SC, 0], # [19]
+
+					  [-578*SC, -41*SC, 0], # [20]
+
+					  [-578*SC, -41*SC, 0], # [21]
+
+					  [-578*SC, 41*SC, 0], # [22]
+
+					  [160*SC, 41*SC, 0], # [23]
+
+					  # Body Bottom
+
+					  [95*SC, 41*SC, 102*SC], # [24]
+
+					  [95*SC, -41*SC, 102*SC], # [25]
+
+					  [-220*SC, -41*SC, 102*SC], # [26]
+
+
+					  [-220*SC, -41*SC, 102*SC], # [27]
+
+					  [-220*SC, 41*SC, 102*SC], # [28]
+
+					  [95*SC, 41*SC, 102*SC], # [29]
+
+					  [-220*SC, -41*SC, 102*SC], # [30]
+
+					  [-220*SC, 41*SC, 102*SC], # [31]
+
+					  [-578*SC, -41*SC, 37*SC], # [32]
+
+
+					  [-578*SC, -41*SC, 37*SC], # [33]
+
+					  [-578*SC, 41*SC, 37*SC], # [34]
+
+					  [-220*SC, 41*SC, 102*SC], # [35]
+
+
+					  [-578*SC, -41*SC, 0], # [36]
+
+					  [-578*SC, -41*SC, 37*SC], # [37]
+
+					  [-578*SC, 41*SC, 37*SC], # [38]
+
+
+					  [-578*SC, 41*SC, 37*SC], # [39]
+
+					  [-578*SC, 41*SC, 0], # [40]
+
+					  [-578*SC, -41*SC, 0], # [41]
+
+					  # Body Left Side
+
+					  [160*SC, -41*SC, 37*SC], # [42]
+
+					  [95*SC, -41*SC, 102*SC], # [43]
+
+					  [95*SC, -41*SC, 37*SC], # [44]
+
+
+					  [95*SC, 41*SC, 102*SC], # [45]
+
+					  [95*SC, 41*SC, 37*SC], # [46]
+
+					  [-220*SC, -41*SC, 37*SC] # [47]
+
+					  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				   
 				   ]
 		
@@ -172,12 +263,41 @@ class VehicleGeometry():
 
 					  [3, 15, 16], # Connect Front Left, Front Right, and Back Right Solid Wing L vertices
 
-					  [3, 17, 16] # Connect Front Left, Back Left, and Back Right Solid Wing L vertices
-						
+					  [3, 17, 16], # Connect Front Left, Back Left, and Back Right Solid Wing L vertices
+
+
+					  # Body Top 
+
+					  [18, 19, 20],
+
+					  [21, 22, 23],
+
+					  # Body Bottom
+
+					  [24, 25, 26],
+
+					  [27, 28, 29],
+
+					  [30, 31, 32],
+
+					  [33, 34, 35],
+
+					  [36, 37, 38],
+
+					  [39, 40, 41],
+
+					  # Body Left Side
+
+					  [42, 43, 44],
+
+					  [45, 46, 47]
+
+
+
 					]
 		
 
-		self.colors = [yellow, blue, green, green, red, red, green, green, red, red, green, green]
+		self.colors = [green, green, green, green, red, red, green, green, red, red, green, green, white, white, blue, blue, blue, blue, blue, blue, blue, blue]
 
 		'''
 

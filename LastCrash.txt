@@ -1,15 +1,15 @@
 Traceback (most recent call last):
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/Chapter2.py", line 223, in <module>
-    ourWindow = testInterface()
-                ^^^^^^^^^^^^^^^
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/Chapter2.py", line 38, in __init__
+  File "C:\Users\seanm\ECE163\project\dorarevisit\Chapter7.py", line 342, in <module>
+    ourWindow = Chapter6()
+                ^^^^^^^^^^
+  File "C:\Users\seanm\ECE163\project\dorarevisit\Chapter7.py", line 42, in __init__
     super().__init__(parent)
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Display/baseInterface.py", line 94, in __init__
+  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Display\baseInterface.py", line 94, in __init__
     self.vehicleInstance = vehicleDisplay.vehicleDisplay()
                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Display/vehicleDisplay.py", line 52, in __init__
+  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Display\vehicleDisplay.py", line 52, in __init__
     self.vehicleDrawInstance = VehicleGeometry.VehicleGeometry()
                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/eliot/Documents/Classes/ECE263/finalProject/dorarevisit/ece163/Modeling/VehicleGeometry.py", line 128, in __init__
-    [-100*SC, -600*SC, 0] # [15] front right of Solid Wing L / front left of aeleron flap L
+  File "C:\Users\seanm\ECE163\project\dorarevisit\ece163\Modeling\VehicleGeometry.py", line 136, in __init__
+    [-160*SC, -700*SC, 0] # [17] back left of Solid Wing L
 TypeError: list indices must be integers or slices, not tuple
