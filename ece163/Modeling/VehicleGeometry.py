@@ -172,49 +172,25 @@ class VehicleGeometry:
             # Main Wing Body
             [0, -700 * self.SC, 0],  # [0] Front Left Corner of Wing
             [0, 700 * self.SC, 0],  # [1] Front Right Corner of Wing
-            [
-                -100 * self.SC,
-                700 * self.SC,
-                0,
-            ],  # [2] Back Right Corner of Wing / front right of solid Wing R
-            [
-                -100 * self.SC,
-                -700 * self.SC,
-                0,
-            ],  # [3] Back Left Corner of Wing / front left of solid Wing L
+            [-100 * self.SC, 700 * self.SC,0],  # [2] Back Right Corner of Wing / front right of solid Wing R
+            [-100 * self.SC,-700 * self.SC,0],  # [3] Back Left Corner of Wing / front left of solid Wing L
             # Solid Wing R of Wing
             [-160 * self.SC, 700 * self.SC, 0],  # [4] back right corner of Solid Wing R
             [-160 * self.SC, 600 * self.SC, 0],  # [5] back left corner of Solid Wing R
-            [
-                -100 * self.SC,
-                600 * self.SC,
-                0,
-            ],  # [6] front left corner of Solid Wing R / front right of aeleronn flap R
+            [-100 * self.SC, 600 * self.SC,0],  # [6] front left corner of Solid Wing R / front right of aeleronn flap R
             # aeleron Flap R: adjustable
             self.aeleron_R_right,  # [7] back right of aeleronn flap R
             self.aeleron_R_left,  # [8] back left of aeleronn flap R
             # Solid Wing C of Wing
-            [
-                -100 * self.SC,
-                200 * self.SC,
-                0,
-            ],  # [9] front right of Solid Wing C / front left of aeleronn flap R
+            [-100 * self.SC,200 * self.SC,0],  # [9] front right of Solid Wing C / front left of aeleronn flap R
             [-160 * self.SC, 200 * self.SC, 0],  # [10] back right of Solid Wing C
             [-160 * self.SC, -200 * self.SC, 0],  # [11] back left of Solid Wing C
-            [
-                -100 * self.SC,
-                -200 * self.SC,
-                0,
-            ],  # [12] front left of Solid Wing C / front right of aeleron flap L
+            [-100 * self.SC,-200 * self.SC,0],  # [12] front left of Solid Wing C / front right of aeleron flap L
             # aeleron Flap L: adjustable
             self.aeleron_L_right,  # [13] back right of aeleron flap L
             self.aeleron_L_left,  # [14] back left of aeleron flap L
             # Solid Wing L (of wing)
-            [
-                -100 * self.SC,
-                -600 * self.SC,
-                0,
-            ],  # [15] front right of Solid Wing L / front left of aeleron flap L
+            [-100 * self.SC,-600 * self.SC,0],  # [15] front right of Solid Wing L / front left of aeleron flap L
             [-160 * self.SC, -600 * self.SC, 0],  # [16] back right of Solid Wing L
             [-160 * self.SC, -700 * self.SC, 0],  # [17] back left of Solid Wing L
             # Body Top
@@ -309,56 +285,20 @@ class VehicleGeometry:
             [0, 1, 2],  # Connect Front Left, Front Right, and Back Right Wing vertices
             [0, 3, 2],  # Connect Front Left, Back Left, and Back Right Wing vertices
             # Solid Wing R - green
-            [
-                6,
-                2,
-                4,
-            ],  # Connect Front Left, Front Right, and Back Right Solid Wing R vertices
-            [
-                6,
-                5,
-                4,
-            ],  # Connect Front Left, Back Left, and Back Right Solid Wing R vertices
+            [6,2,4],  # Connect Front Left, Front Right, and Back Right Solid Wing R vertices
+            [6,5,4],  # Connect Front Left, Back Left, and Back Right Solid Wing R vertices
             # Flap R
-            [
-                9,
-                6,
-                7,
-            ],  # Connect Front Left, Front Right, and Back Right Flap R vertices
+            [9,6,7],  # Connect Front Left, Front Right, and Back Right Flap R vertices
             [9, 8, 7],  # Connect Front Left, Back Left, and Back Right Flap vertices
             # Solid Wing C
-            [
-                12,
-                9,
-                10,
-            ],  # Connect Front Left, Front Right, and Back Right Solid Wing C vertices
-            [
-                12,
-                11,
-                10,
-            ],  # Connect Front Left, Back Left, and Back Right Solid Wing C vertices
+            [12,9,10],  # Connect Front Left, Front Right, and Back Right Solid Wing C vertices
+            [12,11,10],  # Connect Front Left, Back Left, and Back Right Solid Wing C vertices
             # Flap L
-            [
-                15,
-                12,
-                13,
-            ],  # Connect Front Left, Front Right, and Back Right Flap L vertices
-            [
-                15,
-                14,
-                13,
-            ],  # Connect Front Left, Back Left, and Back Right Flap L vertices
+            [15,12,13],  # Connect Front Left, Front Right, and Back Right Flap L vertices
+            [15,14,13],  # Connect Front Left, Back Left, and Back Right Flap L vertices
             # Solid Wing L
-            [
-                3,
-                15,
-                16,
-            ],  # Connect Front Left, Front Right, and Back Right Solid Wing L vertices
-            [
-                3,
-                17,
-                16,
-            ],  # Connect Front Left, Back Left, and Back Right Solid Wing L vertices
+            [3,15,16],  # Connect Front Left, Front Right, and Back Right Solid Wing L vertices
+            [3,17,16],  # Connect Front Left, Back Left, and Back Right Solid Wing L vertices
             # Body Top
             [18, 19, 20],
             [21, 22, 23],
@@ -478,12 +418,8 @@ class VehicleGeometry:
 
     def updateAngles(self, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
 
-        self.aeleronFlapRAngle = (
-            Aileron * 2
-        )  # adjusts based on controller: for calculating the angle based coordinates
-        self.aeleronFlapLAngle = (
-            -Aileron * 2
-        )  # adjusts based on controller: for calculating the angle based coordinates
+        self.aeleronFlapRAngle = (Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
+        self.aeleronFlapLAngle = (-Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
         # print(self.aeleron_R_right)
         # Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
         self.aeleron_R_right = [
