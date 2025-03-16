@@ -97,8 +97,19 @@ class VehicleGeometry():
 		self.aeleron_L_right = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -200*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back right of aeleron flap L | default: [-160*self.SC, -200*self.SC, 0.01]
 		self.aeleron_L_left = [-160*self.SC - (self.aelronFlapRadius*math.cos(self.aeleronFlapRAngle*math.pi/180) - self.aelronFlapRadius), -600*self.SC, self.aelronFlapRadius*math.sin(self.aeleronFlapLAngle*math.pi/180)] # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
 
+		# Propellars
+		self.PropellarRadius = 113*self.SC # CONST: for calculating the angle based coordinates
+		self.propellarAngle = 100 # adjusts based on controller: for calculating the angle based coordinates
+		# self.propellar_R_top = [161*self.SC, self.PropellarRadius*math.cos( + 0.07), self.PropellarRadius*math.sin(self.aeleronFlapRAngle*math.pi/180 + 0.07)]
+		# self.propellar_R_bottom = [161*self.SC, self.PropellarRadius*math.cos(self.aeleronFlapRAngle*math.pi/180 - 0.07), self.PropellarRadius*math.sin(self.aeleronFlapRAngle*math.pi/180 - 0.07)]
+		# self.propellar_L_top = [161*self.SC, self.PropellarRadius*math.cos(self.aeleronFlapRAngle*math.pi/180 + 3.07), self.PropellarRadius*math.sin(self.aeleronFlapRAngle*math.pi/180 + 3.07)]
+		# self.propellar_L_bottom = [161*self.SC, self.PropellarRadius*math.cos(self.aeleronFlapRAngle*math.pi/180 + 3.21), self.PropellarRadius*math.sin(self.aeleronFlapRAngle*math.pi/180 + 3.21)]
+		self.propellar_R_top = [161*self.SC, self.PropellarRadius*math.cos(self.propellarAngle*math.pi/180 + 0.07), 38*self.SC + self.PropellarRadius*math.sin(self.propellarAngle*math.pi/180 + 0.07)]
+		self.propellar_R_bottom = [161*self.SC, self.PropellarRadius*math.cos(self.propellarAngle*math.pi/180 - 0.07), 22*self.SC + self.PropellarRadius*math.sin(self.propellarAngle*math.pi/180 - 0.07)]
+		self.propellar_L_top = [161*self.SC, self.PropellarRadius*math.cos(self.propellarAngle*math.pi/180 + 3.07), 38*self.SC + self.PropellarRadius*math.sin(self.propellarAngle*math.pi/180 + 3.07)]
+		self.propellar_L_bottom = [161*self.SC, self.PropellarRadius*math.cos(self.propellarAngle*math.pi/180 + 3.21), 22*self.SC + self.PropellarRadius*math.sin(self.propellarAngle*math.pi/180 + 3.21)]
+
 		self.vertices = [
-						
 						# Main Wing Body
 						
 						[0, -700*self.SC, 0], # [0] Front Left Corner of Wing 
@@ -311,21 +322,18 @@ class VehicleGeometry():
 
 					  # Propellor 
 
-					  [161*self.SC, 113*self.SC, 22*self.SC], # [90]
+					  self.propellar_R_top, # [161*self.SC, 113*self.SC, 22*self.SC], # [90] propellar right top
 
-					  [161*self.SC, 113*self.SC, 38*self.SC], # [91]
+					  self.propellar_R_bottom, # [161*self.SC, 113*self.SC, 38*self.SC], # [91] propellar right bottom
 
 					  [161*self.SC, 0, 30*self.SC], # [92]
 
 
-					  [161*self.SC, -113*self.SC, 22*self.SC], # [93]
+					  self.propellar_L_top, # [161*self.SC, -113*self.SC, 22*self.SC], # [93] propellar left top
 
-					  [161*self.SC, -113*self.SC, 38*self.SC], # [94]
+					  self.propellar_L_bottom, #[161*self.SC, -113*self.SC, 38*self.SC], # [94] propelar left bottom
 
 					  [161*self.SC, 0, 30*self.SC] # [95]
-
-
-
 
 
 
