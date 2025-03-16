@@ -32,7 +32,33 @@ class WindModel:
 
     self.x_v_prev = [[0], [0]] # Initialize previous state x_v to zero given in lecture
 
-    self.x_w_prev = [[0], [0]] # Initialize previous state x_w to zero given in lecture a
+    self.x_w_prev = [[0], [0]] # Initialize previous state x_w to zero given in lecture
+
+    
+    # Intialize u, v, w matrices and set to zero intially since nothing has yet been sampled 
+
+    #self.Phi_u = [[0]] # Intialize Phi_u matrix to zero as seen in Dryden handout
+
+    #self.Gamma_u = [[0]] # Intialize Gamma_u matrix to zero as seen in Dryden handout
+
+    #self.H_u = [[0]] # Intialize H_u matrix to zero as seen in Dryden handout
+
+    # Intialize v matrices
+
+    #self.Phi_v = [[0, 0], [0, 0]] # Intialize Phi_v matrix to zero as seen in Dryden handout
+
+    #self.Gamma_v = [[0], [0]] # Intialize Gamma_v matrix to zero as seen in Dryden handout
+
+   # self.H_v = [[0, 0]] # Intialize H_v matrix to zero as seen in Dryden handout
+
+
+    # Intialize w matrices which are the same as v
+
+    #self.Phi_w = [[0, 0], [0, 0]] # Intialize Phi_w matrix to zero as seen in Dryden handout
+
+    #self.Gamma_w = [[0], [0]] # Intialize Gamma_ wmatrix to zero as seen in Dryden handout
+
+    #self.H_w = [[0, 0]] # Intialize H_w matrix to zero as seen in Dryden handout
 
     # Create Transfer Functions
 
@@ -155,37 +181,8 @@ class WindModel:
         self.H_w = mm.scalarMultiply(sigma_times_sqrt_w, mtrx_H_w) # Calculate H_w
 
         return # return nothing
-    
-   def getDrydenTransferFns(self):
-      
-        '''Wrapper function to return the internals of the Dryden Transfer function in order to be able to test the code without requiring consistent internal names.
-      Returns the discretized version of the Drydem gust model as outlined in the ECE163_DrydenWindModel handout (Phi_u, Gamma_u, H_u, Phi_v, Gamma_v, H_v, Phi_w, Gamma_w, H_w).'''
-    
-        return self.Phi_u, self.Gamma_u, self.H_u, self.Phi_v, self.Gamma_v, self.H_v, self.Phi_w, self.Gamma_w, self.H_w
    
-        # Return all Phi's, Gamma's, and H's from the transfer functions
 
-   def setWindModelParameters(self, Wn=0.0, We=0.0, Wd=0.0, drydenParameters=VPC.DrydenNoWind):
-
-    '''Wrapper function that will inject parameters into the wind model. 
-       This class models wind according to the Dryden Wind Model, where winds are a static component plus stocahstically derived gusts.'''
-     
-    self.wind.Wn = Wn # Inject new inertial northern wind value
-
-    self.wind.We = We # Inject new inertial eastern wind value
-
-    self.wind.Wd = Wd # Inject new inertial downwards wind value
-
-    self.drydenParameters = drydenParameters # inject new dryden parameters
-
-    Va = self.Va # Get current Va
-
-    dT = self.dT # Get current time step
-
-    self.CreateDrydenTransferFns(dT, Va, drydenParameters) # Update Dryden TF
-
-    return # return nothing
-   
    def Update(self, uu=None, uv=None, uw=None):
 
     '''
@@ -197,17 +194,17 @@ class WindModel:
 
     # Run the Gaussian to mimic wind note: this is Pseudo Random and not truely random. For a Sim it is fine however
 
-    if(uu is None):
+    if(uu == None):
       
-      uu = random.gauss(0.0, 1.0) # Generate Random noise for mu in u
+      uu = random.gauss(0, 1) # Generate Random noise for mu in u
 
-    if(uv is None):
+    if(uv == None):
       
-      uv = random.gauss(0.0, 1.0) # Generate Random noise for mu in v
+      uv = random.gauss(0, 1) # Generate Random noise for mu in v
 
-    if(uw is None):
+    if(uw == None):
       
-      uw = random.gauss(0.0, 1.0) # Generate Random noise for mu in w
+      uw = random.gauss(0, 1) # Generate Random noise for mu in w
 
     # Get previous states
 
@@ -215,7 +212,7 @@ class WindModel:
 
     Xv_minus = self.x_v_prev
 
-    Xw_minus = self.x_w_prev
+    Xw_minus = self.x_w_prev   
 
 
     # Begin time sampling for u  
@@ -226,7 +223,7 @@ class WindModel:
 
     self.wind.Wu = Wu_update[0][0] # Update current Wu wind parameter
 
-    #self.x_u_prev = new_Xu_state # Set old u state to new u state
+    self.x_u_prev = new_Xu_state # Set old u state to new u state
 
 
     # Begin time sampling for v  
@@ -252,6 +249,8 @@ class WindModel:
     return # Return nothing
    
    
+
+
    def getWind(self):
      
     '''Wrapper function to return the wind state from the module '''
@@ -285,13 +284,33 @@ class WindModel:
      # Rest Wind Model but not parameters
 
      self.wind = States.windState() # Rest wind Model but parameters remain at present value
-
-     return # return nothing
      
-    
-      
-      
-
+     return # Return nothing
    
+
+   def setWindModelParameters(self, Wn=0.0, We=0.0, Wd=0.0, drydenParameters=VPC.DrydenNoWind):
+
+    '''Wrapper function that will inject parameters into the wind model. 
+       This class models wind according to the Dryden Wind Model, where winds are a static component plus stocahstically derived gusts.'''
+     
+    self.wind.Wn = Wn # Inject new inertial northern wind value
+
+    self.wind.We = We # Inject new inertial eastern wind value
+
+    self.wind.Wd = Wd # Inject new inertial downwards wind value
+
+    self.drydenParameters = drydenParameters # inject new dryden parameters
+
+    return # return nothing
+   
+   def getDrydenTransferFns(self):
+     
+    '''Wrapper function to return the internals of the Dryden Transfer function in order to be able to test the code without requiring consistent internal names.
+      Returns the discretized version of the Drydem gust model as outlined in the ECE163_DrydenWindModel handout (Phi_u, Gamma_u, H_u, Phi_v, Gamma_v, H_v, Phi_w, Gamma_w, H_w).'''
+    
+    return self.Phi_u, self.Gamma_u, self.H_u, self.Phi_v, self.Gamma_v, self.H_v, self.Phi_w, self.Gamma_w, self.H_w
+   
+   # Return all Phi's, Gamma's, and H's from the transfer functions
+
 
    
