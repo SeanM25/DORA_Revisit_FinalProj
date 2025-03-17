@@ -172,32 +172,37 @@ class VehicleGeometry:
         self.elevator_L_rearflap = [-616*self.SC, -175*self.SC, 37*self.SC]
         self.elevator_R_rearflap = [-616*self.SC, 175*self.SC, 37*self.SC]
         
+		# Rudder
+        self.rudder_top_rearflap = [-616*self.SC, 0, -122*self.SC]
+        self.rudder_bottom_rearflap = [-616*self.SC, 0, 0]
+        
+        
 
         self.vertices = [
             # Main Wing Body
-            [0, -700 * self.SC, 0],  # [0] Front Left Corner of Wing
-            [0, 700 * self.SC, 0],  # [1] Front Right Corner of Wing
-            [-100 * self.SC, 700 * self.SC,0],  # [2] Back Right Corner of Wing / front right of solid Wing R
-            [-100 * self.SC,-700 * self.SC,0],  # [3] Back Left Corner of Wing / front left of solid Wing L
+            [0, -700 * self.SC, -self.SC],  # [0] Front Left Corner of Wing
+            [0, 700 * self.SC, -self.SC],  # [1] Front Right Corner of Wing
+            [-100 * self.SC, 700 * self.SC, -self.SC],  # [2] Back Right Corner of Wing / front right of solid Wing R
+            [-100 * self.SC,-700 * self.SC, -self.SC],  # [3] Back Left Corner of Wing / front left of solid Wing L
             # Solid Wing R of Wing
-            [-160 * self.SC, 700 * self.SC, 0],  # [4] back right corner of Solid Wing R
-            [-160 * self.SC, 600 * self.SC, 0],  # [5] back left corner of Solid Wing R
-            [-100 * self.SC, 600 * self.SC,0],  # [6] front left corner of Solid Wing R / front right of aeleronn flap R
+            [-160 * self.SC, 700 * self.SC, -self.SC],  # [4] back right corner of Solid Wing R
+            [-160 * self.SC, 600 * self.SC, -self.SC],  # [5] back left corner of Solid Wing R
+            [-100 * self.SC, 600 * self.SC, -self.SC],  # [6] front left corner of Solid Wing R / front right of aeleronn flap R
             # aeleron Flap R: adjustable
             self.aeleron_R_right,  # [7] back right of aeleronn flap R
             self.aeleron_R_left,  # [8] back left of aeleronn flap R
             # Solid Wing C of Wing
-            [-100 * self.SC,200 * self.SC,0],  # [9] front right of Solid Wing C / front left of aeleronn flap R
-            [-160 * self.SC, 200 * self.SC, 0],  # [10] back right of Solid Wing C
-            [-160 * self.SC, -200 * self.SC, 0],  # [11] back left of Solid Wing C
-            [-100 * self.SC,-200 * self.SC,0],  # [12] front left of Solid Wing C / front right of aeleron flap L
+            [-100 * self.SC,200 * self.SC, -self.SC],  # [9] front right of Solid Wing C / front left of aeleronn flap R
+            [-160 * self.SC, 200 * self.SC, -self.SC],  # [10] back right of Solid Wing C
+            [-160 * self.SC, -200 * self.SC, -self.SC],  # [11] back left of Solid Wing C
+            [-100 * self.SC,-200 * self.SC, -self.SC],  # [12] front left of Solid Wing C / front right of aeleron flap L
             # aeleron Flap L: adjustable
             self.aeleron_L_right,  # [13] back right of aeleron flap L
             self.aeleron_L_left,  # [14] back left of aeleron flap L
             # Solid Wing L (of wing)
-            [-100 * self.SC,-600 * self.SC,0],  # [15] front right of Solid Wing L / front left of aeleron flap L
-            [-160 * self.SC, -600 * self.SC, 0],  # [16] back right of Solid Wing L
-            [-160 * self.SC, -700 * self.SC, 0],  # [17] back left of Solid Wing L
+            [-100 * self.SC,-600 * self.SC, -self.SC],  # [15] front right of Solid Wing L / front left of aeleron flap L
+            [-160 * self.SC, -600 * self.SC, -self.SC],  # [16] back right of Solid Wing L
+            [-160 * self.SC, -700 * self.SC, -self.SC],  # [17] back left of Solid Wing L
             # Body Top
             [160 * self.SC, 41 * self.SC, 0],  # [18]
             [160 * self.SC, -41 * self.SC, 0],  # [19]
@@ -291,6 +296,16 @@ class VehicleGeometry:
             [-498 * self.SC, 175 * self.SC, 37 * self.SC], # [100] elevator Left Front
             [-498 * self.SC, -175 * self.SC, 37 * self.SC], # [101] elevator Right Front
             
+
+			# Rudder
+			self.rudder_top_rearflap, # [102] rudder top rearflap
+			self.rudder_bottom_rearflap, # [103] rudder bottom rearflap
+            [-578* self.SC, 0, 37* self.SC], # [104] rudder bottom rear flap
+            [-578* self.SC, 0, -122* self.SC], # [105] rudder top rear hinge
+            [-578* self.SC, 0, 0], # [106] rudder bottom rear hinge
+            [-522* self.SC, 0, 0], # [107] rudder bottom middle
+            [-522* self.SC, 0, -122* self.SC], # [108] rudder top middle
+            [-443* self.SC, 0, 0], # [109] rudder bottom front     
         ]
         
 
@@ -350,6 +365,12 @@ class VehicleGeometry:
 			[96, 99, 98],
 			[98, 99, 100],
 			[99, 100, 101],
+            # Rudder
+            [102, 103, 104],
+            [102, 105, 104],
+            [106, 107, 108],
+            [106, 105, 108],
+            [108, 109, 107],
         ]
 
         self.colors = [
@@ -393,6 +414,11 @@ class VehicleGeometry:
             red,
             red,
             red,
+            green,
+            green,
+            yellow,
+            yellow,
+            green,
             green,
             green,
         ]
@@ -496,6 +522,7 @@ class VehicleGeometry:
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 3.21),
             30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 + 3.21)
         ]
+        
 
     def getNewPoints(self,x,y,z,yaw,pitch,roll,Throttle=0.0,Aileron=0.0,Elevator=0.0,Rudder=0.0):
         """

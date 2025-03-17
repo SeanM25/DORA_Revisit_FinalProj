@@ -10,6 +10,6 @@ Traceback (most recent call last):
   File "C:\Users\hkjia\OneDrive\Desktop\ECE263\dorarevisit\ece163\Display\vehicleDisplay.py", line 54, in __init__
     self.vehicleDrawInstance = VehicleGeometry.VehicleGeometry()
                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\hkjia\OneDrive\Desktop\ECE263\dorarevisit\ece163\Modeling\VehicleGeometry.py", line 289, in __init__
-    [-578 * self.SC, 175 * self.SC, -37 * self.SC] # [98] elevator Left Rear
+  File "C:\Users\hkjia\OneDrive\Desktop\ECE263\dorarevisit\ece163\Modeling\VehicleGeometry.py", line 303, in __init__
+    [-578, 0, 37] # [104] rudder bottom rear flap
 TypeError: list indices must be integers or slices, not tuple
