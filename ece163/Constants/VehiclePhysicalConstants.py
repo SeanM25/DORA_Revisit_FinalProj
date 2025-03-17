@@ -11,14 +11,14 @@ ROTATEMAX = 180
 dT = 1/100	# Time step for simulation
 RstarMax = 2500	# maximum radius before considered a straight line
 
-# parameters for Aerosonde UAV
+# parameters for D.O.R.A UAV
 InitialSpeed = 25.0	# [m/s]
 InitialNorthPosition = 0.0	# displacement to north [m]
 InitialEastPosition = 0.0	# displacement to east [m]
 InitialDownPosition = -100.0	# [m], negative is above ground
 InitialYawAngle = math.radians(0.0)	# initial heading angle [rad]
 
-mass = 11  # [kg]
+mass =  0.9480  #11  # [kg]
 rho = 1.2682  # [kg / m^3]
 g0 = 9.81  # gravity, [m/s^2]
 b = 2.8956  # wing-span [m]
@@ -31,10 +31,10 @@ AR = b ** 2 / S
 M = 50.  # barrier function coefficient for angle of attack
 alpha0 = math.radians(27.)  # angle at which stall occurs [deg]
 
-Jxx = 0.8244  # [kg m^2]
-Jyy = 1.135  # [kg m^2]
-Jzz = 1.759  # [kg m^2]
-Jxz = 0.1204  # [kg m^2]
+Jxx = 0.8244  # [kg m^2] ???
+Jyy = 1.135  # [kg m^2] ???
+Jzz = 1.759  # [kg m^2] ???
+Jxz = 0.1204  # [kg m^2] ???
 
 Jbody = [[Jxx, 0., -Jxz], [0., Jyy, 0.], [-Jxz, 0., Jzz]]
 Jdet = (Jxx * Jzz - Jxz ** 2)
@@ -48,12 +48,15 @@ Gamma7 = (Jxx * (Jxx - Jyy) + Jxz ** 2) / Jdet
 
 # Lift
 CL0 = 0.23  # zero angle of attack lift coefficient
-CLalpha = math.pi * AR / (1 + math.sqrt(1 + (AR / 2.) ** 2))
-CLalpha = 5.61  # given in book
-CLq = 7.95  # needs to be normalized by c/2*Va
-CLdeltaE = 0.13  # lift due to elevator deflection
+#CLalpha = math.pi * AR / (1 + math.sqrt(1 + (AR / 2.) ** 2))
+CLalpha = 5.161673  #5.61  # given in book
+CLq = 7.659472  #7.95  # needs to be normalized by c/2*Va
+CLdeltaE =  0.006573  #0.13  # lift due to elevator deflection
 
 # Drag
+# ???
+
+
 CDp = 0.06  # minimum drag, derived from terminal velocity of 74m/s (148 knots)
 CDalpha = 0.03  # drag slope
 CD0 = 0.043  # intercept of linarized drag slope
@@ -68,27 +71,27 @@ CMdeltaE = -0.99  # pitching moment from elevator
 
 # Sideforce
 CY0 = 0.
-CYbeta = -0.98
-CYp = 0.
-CYr = 0.
-CYdeltaA = 0.075
-CYdeltaR = 0.19
+CYbeta = -0.156427  #-0.98
+CYp =  0.056666   #0.
+CYr = 0.121233    #0.
+CYdeltaA =  0.000210    #0.075
+CYdeltaR = -0.001715   #0.19
 
 # Rolling Moment
 Cl0 = 0.
-Clbeta = -0.13
-Clp = -0.51
-Clr = 0.25
-CldeltaA = 0.17
-CldeltaR = 0.0024
+Clbeta = -0.000559  #-0.13
+Clp = -0.560230   #-0.51
+Clr = 0.095393  #0.25
+CldeltaA =  -0.005874  #0.17
+CldeltaR = -0.000036  #0.0024
 
 # Yawing Moment
 Cn0 = 0.
-Cnbeta = 0.073
-Cnp = 0.069
-Cnr = -0.095
-CndeltaA = -0.011
-CndeltaR = -0.069
+Cnbeta = 0.052131  #0.073
+Cnp =  -0.029308  #0.069
+Cnr = -0.042795  #-0.095
+CndeltaA = 0.000098   #-0.011
+CndeltaR =  0.000645  #-0.069
 
 # Propeller Thrust
 Sprop = 0.2027 # propellor area [m^2]
