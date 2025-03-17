@@ -87,90 +87,70 @@ class VehicleGeometry:
         wing_depth = 100  # mm
 
         # Editable flap coordinates
-        self.aelronFlapRadius = (
-            60 * self.SC
-        )  # CONST: for calculating the angle based coordinates
-        self.aeleronFlapRAngle = (
-            -30
-        )  # adjusts based on controller: for calculating the angle based coordinates
-        self.aeleronFlapLAngle = 30  # adjusts based on controller: for calculating the angle based coordinates
+        self.aelronFlapRadius = 60 * self.SC  # CONST: for calculating the angle based coordinates
+        self.aeleronFlapRAngle = -15 # adjusts based on controller: for calculating the angle based coordinates
+        self.aeleronFlapLAngle = 15  # adjusts based on controller: for calculating the angle based coordinates
 
         # Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
         self.aeleron_R_right = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             600 * self.SC,
-            self.aelronFlapRadius * math.sin(self.aeleronFlapRAngle * math.pi / 180),
+            self.aelronFlapRadius * math.sin(self.aeleronFlapRAngle * math.pi / 180)
         ]  # back right of aeleronn flap R | default: [-160*self.SC, 600*self.SC, 0.01]
         self.aeleron_R_left = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             200 * self.SC,
-            self.aelronFlapRadius * math.sin(self.aeleronFlapRAngle * math.pi / 180),
+            self.aelronFlapRadius * math.sin(self.aeleronFlapRAngle * math.pi / 180)
         ]  # back left of aeleronn flap R | default: [-160*self.SC, 200*self.SC, 0.01]
         self.aeleron_L_right = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             -200 * self.SC,
-            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180),
+            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180)
         ]  # back right of aeleron flap L | default: [-160*self.SC, -200*self.SC, 0.01]
         self.aeleron_L_left = [
-            -160 * self.SC
-            - (
-                self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180)
-                - self.aelronFlapRadius
-            ),
+            -160 * self.SC - (self.aelronFlapRadius * math.cos(self.aeleronFlapRAngle * math.pi / 180) - self.aelronFlapRadius),
             -600 * self.SC,
-            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180),
+            self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180)
         ]  # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
-
+        
         # Propellars
-        self.PropellarRadius = (
-            113 * self.SC
-        )  # CONST: for calculating the angle based coordinates
-        self.propellarIncrementer = 20
+        self.PropellarRadius = 113 * self.SC  # CONST: for calculating the angle based coordinates
+        self.propellarIncrementer = 20 # multiplier that scales propellar speed
         self.propellarAngle = 30  # adjusts based on controller: for calculating the angle based coordinates
         self.propellar_R_top = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 0.07),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 + 0.07),
+            30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 + 0.07)
         ]
         self.propellar_R_bottom = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 - 0.07),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 - 0.07),
+            30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 - 0.07)
         ]
         self.propellar_L_top = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 3.07),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 + 3.07),
+            30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 + 3.07)
         ]
         self.propellar_L_bottom = [
             161 * self.SC,
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 3.21),
-            30 * self.SC
-            + self.PropellarRadius
-            * math.sin(self.propellarAngle * math.pi / 180 + 3.21),
+            30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 + 3.21)
         ]
         
 		# Elevator
-        self.elevator_L_rearflap = [-616*self.SC, -175*self.SC, 37*self.SC]
-        self.elevator_R_rearflap = [-616*self.SC, 175*self.SC, 37*self.SC]
+        self.ElevatorFlapRadius = 38 * self.SC  # CONST: for calculating the angle based coordinates
+        self.elevatorFlapAngle = 30  # adjusts based on controller: for calculating the angle based coordinates
+        self.elevator_L_rearflap = [
+            -616 * self.SC - (self.ElevatorFlapRadius * math.cos(self.elevatorFlapAngle * math.pi / 180) - self.ElevatorFlapRadius),
+            -175*self.SC,
+            37*self.SC + self.ElevatorFlapRadius * math.sin(self.elevatorFlapAngle * math.pi / 180)
+        ]
+        self.elevator_R_rearflap = [
+            -616 * self.SC - (self.ElevatorFlapRadius * math.cos(self.elevatorFlapAngle * math.pi / 180) - self.ElevatorFlapRadius),
+            175*self.SC,
+            37*self.SC + self.ElevatorFlapRadius * math.sin(self.elevatorFlapAngle * math.pi / 180)
+        ]
         
 		# Rudder
         self.rudder_top_rearflap = [-616*self.SC, 0, -122*self.SC]
@@ -522,6 +502,18 @@ class VehicleGeometry:
             self.PropellarRadius * math.cos(self.propellarAngle * math.pi / 180 + 3.21),
             30 * self.SC + self.PropellarRadius * math.sin(self.propellarAngle * math.pi / 180 + 3.21)
         ]
+        # Elevator
+        self.elevatorFlapAngle = Elevator * 2  # adjusts based on controller: for calculating the angle based coordinates
+        self.elevator_L_rearflap = [
+            -616 * self.SC - (self.ElevatorFlapRadius * math.cos(self.elevatorFlapAngle * math.pi / 180) - self.ElevatorFlapRadius),
+            -175*self.SC,
+            37*self.SC + self.ElevatorFlapRadius * math.sin(self.elevatorFlapAngle * math.pi / 180)
+        ]
+        self.elevator_R_rearflap = [
+            -616 * self.SC - (self.ElevatorFlapRadius * math.cos(self.elevatorFlapAngle * math.pi / 180) - self.ElevatorFlapRadius),
+            175*self.SC,
+            37*self.SC + self.ElevatorFlapRadius * math.sin(self.elevatorFlapAngle * math.pi / 180)
+        ]
         
 
     def getNewPoints(self,x,y,z,yaw,pitch,roll,Throttle=0.0,Aileron=0.0,Elevator=0.0,Rudder=0.0):
@@ -549,6 +541,9 @@ class VehicleGeometry:
         self.vertices[91] = self.propellar_R_bottom
         self.vertices[93] = self.propellar_L_top
         self.vertices[94] = self.propellar_L_bottom
+        # Elevator:
+        self.vertices[96] = self.elevator_L_rearflap
+        self.vertices[97] = self.elevator_R_rearflap
 
         newPoints = self.vertices
 
