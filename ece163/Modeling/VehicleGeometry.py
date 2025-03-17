@@ -153,11 +153,22 @@ class VehicleGeometry:
         ]
         
 		# Rudder
-        self.rudder_top_rearflap = [-616*self.SC, 0, -122*self.SC]
-        self.rudder_bottom_rearflap = [-616*self.SC, 0, 0]
+        self.RudderFlapRadius = 38 * self.SC  # CONST: for calculating the angle based coordinates
+        self.rudderFlapAngle = 30  # adjusts based on controller: for calculating the angle based coordinates
+        self.rudder_top_rearflap = [
+            -616 * self.SC - (self.RudderFlapRadius * math.cos(self.rudderFlapAngle * math.pi / 180) - self.RudderFlapRadius),
+            self.RudderFlapRadius * math.sin(self.rudderFlapAngle * math.pi / 180),
+            -122*self.SC
+        ]
+        self.rudder_bottom_rearflap = [
+            -616 * self.SC - (self.RudderFlapRadius * math.cos(self.rudderFlapAngle * math.pi / 180) - self.RudderFlapRadius),
+            self.RudderFlapRadius * math.sin(self.rudderFlapAngle * math.pi / 180),
+            0
+        ]
+		# self.rudder_top_rearflap = [-616*self.SC, 0, -122*self.SC]
+        # self.rudder_bottom_rearflap = [-616*self.SC, 0, 0]
         
         
-
         self.vertices = [
             # Main Wing Body
             [0, -700 * self.SC, -self.SC],  # [0] Front Left Corner of Wing
@@ -366,8 +377,8 @@ class VehicleGeometry:
             red,
             green,
             green,
-            white,
-            white,
+            blue, # boddy top
+            blue, # boddy top
             blue,
             blue,
             blue,
@@ -514,7 +525,19 @@ class VehicleGeometry:
             175*self.SC,
             37*self.SC + self.ElevatorFlapRadius * math.sin(self.elevatorFlapAngle * math.pi / 180)
         ]
-        
+        # Rudder
+        self.rudderFlapAngle = -Rudder * 2  # adjusts based on controller: for calculating the angle based coordinates
+        self.rudder_top_rearflap = [
+            -616 * self.SC - (self.RudderFlapRadius * math.cos(self.rudderFlapAngle * math.pi / 180) - self.RudderFlapRadius),
+            self.RudderFlapRadius * math.sin(self.rudderFlapAngle * math.pi / 180),
+            -122*self.SC
+        ]
+        self.rudder_bottom_rearflap = [
+            -616 * self.SC - (self.RudderFlapRadius * math.cos(self.rudderFlapAngle * math.pi / 180) - self.RudderFlapRadius),
+            self.RudderFlapRadius * math.sin(self.rudderFlapAngle * math.pi / 180),
+            0
+        ]
+         
 
     def getNewPoints(self,x,y,z,yaw,pitch,roll,Throttle=0.0,Aileron=0.0,Elevator=0.0,Rudder=0.0):
         """
@@ -544,6 +567,9 @@ class VehicleGeometry:
         # Elevator:
         self.vertices[96] = self.elevator_L_rearflap
         self.vertices[97] = self.elevator_R_rearflap
+        # Rudder:
+        self.vertices[102] = self.rudder_top_rearflap
+        self.vertices[103] = self.rudder_bottom_rearflap
 
         newPoints = self.vertices
 
