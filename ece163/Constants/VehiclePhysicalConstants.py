@@ -5,6 +5,8 @@ import math
 from ece163.Utilities import MatrixMath
 from ece163.Containers import Inputs
 
+# Edited/Updated with Constants from D.O.R.A UAV from AVL Time to Fly!
+
 LINEARMAX = 250
 ROTATEMAX = 180
 
@@ -21,20 +23,20 @@ InitialYawAngle = math.radians(0.0)	# initial heading angle [rad]
 mass =  0.9480  #11  # [kg]
 rho = 1.2682  # [kg / m^3]
 g0 = 9.81  # gravity, [m/s^2]
-b = 2.8956  # wing-span [m]
-c = 0.18994  # wing chord [m]
-S = 0.55  # wing area [m^2]
+b = 1.5 #2.8956  # wing-span [m]
+c = 0.160 #0.18994  # wing chord [m]
+S = 0.24 #0.55  # wing area [m^2]
 e = 0.9  # Oswald's Efficiency Factor []
 
 AR = b ** 2 / S
 
 M = 50.  # barrier function coefficient for angle of attack
-alpha0 = math.radians(27.)  # angle at which stall occurs [deg]
+alpha0 = math.radians(11.0) #math.radians(27.)  # angle at which stall occurs [deg]
 
-Jxx = 0.8244  # [kg m^2] ???
-Jyy = 1.135  # [kg m^2] ???
-Jzz = 1.759  # [kg m^2] ???
-Jxz = 0.1204  # [kg m^2] ???
+Jxx = 0.28286  #0.8244  # [kg m^2] ???
+Jyy = 0.178614 #1.135  # [kg m^2] ???
+Jzz = 0.365827 #1.759  # [kg m^2] ???
+Jxz = 0.073396535 #0.1204  # [kg m^2] ???
 
 Jbody = [[Jxx, 0., -Jxz], [0., Jyy, 0.], [-Jxz, 0., Jzz]]
 Jdet = (Jxx * Jzz - Jxz ** 2)
@@ -47,7 +49,7 @@ Gamma7 = (Jxx * (Jxx - Jyy) + Jxz ** 2) / Jdet
 # Aerodynamic Partial Derivatives for Forces
 
 # Lift
-CL0 = 0.23  # zero angle of attack lift coefficient
+CL0 = 0.36294  #0.23  # zero angle of attack lift coefficient
 #CLalpha = math.pi * AR / (1 + math.sqrt(1 + (AR / 2.) ** 2))
 CLalpha = 5.161673  #5.61  # given in book
 CLq = 7.659472  #7.95  # needs to be normalized by c/2*Va
@@ -57,17 +59,17 @@ CLdeltaE =  0.006573  #0.13  # lift due to elevator deflection
 # ???
 
 
-CDp = 0.06  # minimum drag, derived from terminal velocity of 74m/s (148 knots)
-CDalpha = 0.03  # drag slope
-CD0 = 0.043  # intercept of linarized drag slope
+CDp = 0 #0.06  # minimum drag, derived from terminal velocity of 74m/s (148 knots)
+CDalpha = 0 #0.03  # drag slope
+CD0 = 0 #0.043  # intercept of linarized drag slope
 CDq = 0  # drag wrt pitch rate
-CDdeltaE = 0.0135  # drag due to elevator deflection
+CDdeltaE = 0 #0.0135  # drag due to elevator deflection
 
 # Pitching Moment
-CM0 = 0.0135  # intercept of pitching moment
-CMalpha = -2.74  # pitching moment slope
-CMq = -38.21  # pitching moment wrt q
-CMdeltaE = -0.99  # pitching moment from elevator
+CM0 = 0.0 #0.0135  # intercept of pitching moment
+CMalpha = -0.655797 #-2.74  # pitching moment slope
+CMq = -21.365163 #-38.21  # pitching moment wrt q
+CMdeltaE = -0.19226 #-0.99  # pitching moment from elevator
 
 # Sideforce
 CY0 = 0.
@@ -94,24 +96,24 @@ CndeltaA = 0.000098   #-0.011
 CndeltaR =  0.000645  #-0.069
 
 # Propeller Thrust
-Sprop = 0.2027 # propellor area [m^2]
+Sprop = 0.00861 #0.2027 # propellor area [m^2]
 kmotor = 80.  # motor constant
 kTp = 0.  # motor torque constant
 kOmega = 0.  # motor speed constant
-Cprop = 1.0  # propeller thrust coefficient
+Cprop = 1.3962 #1.0  # propeller thrust coefficient
 
 # Alternate Propellor Model
-D_prop = 20. * (0.0254)  # prop diameter in m
+D_prop = 0.2286 #20. * (0.0254)  # prop diameter in m
 #
 # # Motor parameters
-KV = 145.  # from datasheet RPM/V
+KV = 1120 #145.  # from datasheet RPM/V
 KQ = (1. / KV) * 60. / (2. * math.pi)  # KQ in N-m/A, V-s/rad
-R_motor = 0.042  # ohms
-i0 = 1.5  # no-load (zero-torque) current (A)
+R_motor = 0.068 #0.042  # ohms
+i0 = 1.2 #1.5  # no-load (zero-torque) current (A)
 
 # Inputs
-ncells = 12.
-V_max = 3.7 * ncells  # max voltage for specified number of battery cells
+ncells = 3 #12.
+V_max = 12.6 #3.7 * ncells  # max voltage for specified number of battery cells
 
 # Coeffiecients from prop_data fit (from lecture slide)
 C_Q2 = -0.01664
