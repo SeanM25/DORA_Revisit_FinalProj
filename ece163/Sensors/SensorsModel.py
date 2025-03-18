@@ -137,11 +137,11 @@ class GaussMarkovXYZ:
 
         # Resets GM XYZ models
 
-        self.GM_XYZ_X = self.GM_XYZ_X.reset() # reset GM_XYZ X
+        self.GM_XYZ_X.reset() # reset GM_XYZ X
 
-        self.GM_XYZ_Y = self.GM_XYZ_Y.reset() # reset GM_XYZ Y
+        self.GM_XYZ_Y.reset() # reset GM_XYZ Y
 
-        self.GM_XYZ_Z = self.GM_XYZ_Z.reset() # reset GM_XYZ Z
+        self.GM_XYZ_Z.reset() # reset GM_XYZ Z
 
         return # return nothing
     
@@ -179,7 +179,7 @@ class SensorsModel:
 
         # Get time step dT
 
-        self.dT = self.VAM.VDynamics.dT # Get dT
+        self.dT = self.VAM.getVehicleDynamicsModel().dT # Get dT
 
         # Intialize Gauss Markov for both Gyro & GPS. Use GM XYZ since they both measure in 3-D
 
@@ -564,9 +564,9 @@ class SensorsModel:
     
     def update(self):
 
-        state = self.VAM.VDynamics.state # Get current state
+        state = self.VAM.getVehicleState()# Get current state
 
-        dot = self.VAM.VDynamics.dot # get current state derivative
+        dot = self.VAM.getVehicleDynamicsModel().dot # get current state derivative
 
         prevSensorTrue = self.sensorsTrue # The previous sensor true state is the current sensors true state
 
@@ -580,66 +580,3 @@ class SensorsModel:
     
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-                 
-
-
-
-        
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

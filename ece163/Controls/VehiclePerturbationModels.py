@@ -67,6 +67,16 @@ def CreateTransferFunction(trimState, trimInputs):
 
     Va = trimState.Va # Get airspeed in the trim
 
+        # Va error checking for bugs
+
+    if(Va == 0): # If Va is equal to zero
+
+        Va = 1 # Make it 1
+
+    elif(Va < 0): # If a negative airspeed is passed in
+
+        Va = -1 * Va # Flip the sign
+
     m = VPC.mass # Get aircraft mass
 
     alpha_in_trim = trimState.alpha # angle of attack in the trim
