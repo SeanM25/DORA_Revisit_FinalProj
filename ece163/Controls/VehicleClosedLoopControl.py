@@ -381,7 +381,7 @@ class VehicleClosedLoopControl:
 
         # wrapper function to set that is inject the vehicle state
 
-        self.VAM.VDynamics.state = state # Set new vehicle stae
+        self.VAM.getVehicleDynamicsModel().state = state # Set new vehicle stae
 
         return # return nothing
     
