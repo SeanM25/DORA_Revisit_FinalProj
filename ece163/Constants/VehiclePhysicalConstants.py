@@ -14,7 +14,7 @@ dT = 1/100	# Time step for simulation
 RstarMax = 2500	# maximum radius before considered a straight line
 
 # parameters for D.O.R.A UAV
-InitialSpeed = 25.0	# [m/s]
+InitialSpeed = 15.0 #25.0	# [m/s]
 InitialNorthPosition = 0.0	# displacement to north [m]
 InitialEastPosition = 0.0	# displacement to east [m]
 InitialDownPosition = -100.0	# [m], negative is above ground
@@ -53,7 +53,7 @@ CL0 = 0.36294  #0.23  # zero angle of attack lift coefficient
 #CLalpha = math.pi * AR / (1 + math.sqrt(1 + (AR / 2.) ** 2))
 CLalpha = 5.161673  #5.61  # given in book
 CLq = 7.659472  #7.95  # needs to be normalized by c/2*Va
-CLdeltaE =  0.006573  #0.13  # lift due to elevator deflection
+CLdeltaE =  0.1044 #0.006573  #0.13  # lift due to elevator deflection
 
 # Drag
 # ???
@@ -73,27 +73,27 @@ CMdeltaE = -0.19226 #-0.99  # pitching moment from elevator
 
 # Sideforce
 CY0 = 0.
-CYbeta = -0.156427  #-0.98
-CYp =  0.056666   #0.
-CYr = 0.121233    #0.
+CYbeta = -0.156 #-0.156427  #-0.98
+CYp =  0.0 #0.056666   #0.
+CYr = 0.0 #0.121233    #0.
 CYdeltaA =  0.000210    #0.075
 CYdeltaR = -0.001715   #0.19
 
 # Rolling Moment
 Cl0 = 0.
-Clbeta = -0.000559  #-0.13
+Clbeta = -0.025271 #-0.000559  #-0.13
 Clp = -0.560230   #-0.51
-Clr = 0.095393  #0.25
-CldeltaA =  -0.005874  #0.17
-CldeltaR = -0.000036  #0.0024
+Clr = 0.095392 #0.095393  #0.25
+CldeltaA = 0.209039  #-0.005874  #0.17
+CldeltaR = 0.000036 #-0.000036  #0.0024
 
 # Yawing Moment
 Cn0 = 0.
 Cnbeta = 0.052131  #0.073
-Cnp =  -0.029308  #0.069
-Cnr = -0.042795  #-0.095
-CndeltaA = 0.000098   #-0.011
-CndeltaR =  0.000645  #-0.069
+Cnp =  -0.029271 #-0.029308  #0.069
+Cnr = -0.042798  #-0.095
+CndeltaA = -0.003558 #0.000098   #-0.011
+CndeltaR =  -0.000645  #-0.069
 
 # Propeller Thrust
 Sprop = 0.00861 #0.2027 # propellor area [m^2]
@@ -159,7 +159,7 @@ minControls = Inputs.controlInputs(0.0, -math.radians(25.0), -math.radians(25.0)
 maxControls = Inputs.controlInputs(1.0, math.radians(25.0), math.radians(25.0), math.radians(25.0))
 
 #Aircraft maneuver limits
-bankAngleLimit = 60.0	# [deg] This is aggressive, 30-45 degrees is more usual
+bankAngleLimit = 20.0 #60.0	# [deg] This is aggressive, 30-45 degrees is more usual
 courseAngleLimit = 45.0	# [deg] how much course change before saturating integrator
-pitchAngleLimit = 30.0	# [deg] This is aggressive, 15-20 degrees is more usual
+pitchAngleLimit = 15.0 #30.0	# [deg] This is aggressive, 15-20 degrees is more usual
 altitudeHoldZone = 30.0	# [m] the saturation zone when to switch modes on altitude hold
