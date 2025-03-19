@@ -458,8 +458,8 @@ class VehicleGeometry:
 
     def updateAngles(self, Throttle=0.0, Aileron=0.0, Elevator=0.0, Rudder=0.0):
 		### Ailerons
-        self.aeleronFlapRAngle = (Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
-        self.aeleronFlapLAngle = (-Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
+        self.aeleronFlapRAngle = (-Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
+        self.aeleronFlapLAngle = (Aileron * 2)  # adjusts based on controller: for calculating the angle based coordinates
         # print(self.aeleron_R_right)
         ## Where R = radius of aeleron; math: x = x_0 - (R*cos(theta) - R), y = y, z = R*sin(theta)
         self.aeleron_R_right = [
@@ -483,6 +483,8 @@ class VehicleGeometry:
             self.aelronFlapRadius * math.sin(self.aeleronFlapLAngle * math.pi / 180)
         ]  # back left of aeleron flap L | default: [-160*self.SC, -600*self.SC, 0.01]
         # print(self.aeleron_R_right)
+
+
         ### Propellars
         # print(self.propellarAngle)
         self.PropellarRadius = (
